@@ -5,12 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Yeet</title>
-
-        <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
 
     </head>
     <body>
-        <img src={{url('/images/placeholder.png')}} alt='stephen'>
+        <nav class="navbar navbar-expand-sm navbar-fixed-top bg-light">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Yeet</a>
+            </div>
+        </nav>    
+
+        <img src="{{url("img/placeholder.png")}}" alt="stephen">
     </body>
 </html>
