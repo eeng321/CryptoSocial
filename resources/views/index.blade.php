@@ -5,8 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Yeet</title>
+        
+        {{-- Stylesheets --}}
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
+        <link href="{{"css/app.css"}}" rel="stylesheet" type="text/css">
     </head>
     <body>
         <nav class="navbar navbar-expand-sm navbar-fixed-top bg-light">
