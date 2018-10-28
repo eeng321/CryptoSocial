@@ -15,6 +15,6 @@
 // first arg: The "URL Path" that the client is accessing
 // second arg: What executes accordingly
 Route::get('/', function () {
-    return view('index');
+    return view('home');
 });
 
