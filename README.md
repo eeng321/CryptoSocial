@@ -19,7 +19,3 @@
 ## start project
 1. php artisan serve
 2. go to localhost:8000 in browser
-
-## compiling sass files
-1. Make sure you've already run 'npm install' in the project's root folder
-2. execute 'npm run dev' to complile the sass files into a css file
