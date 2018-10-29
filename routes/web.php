@@ -28,3 +28,9 @@ Route::resource('users', 'UserController')->only([
 Route::resource('users', 'UserController')->except([
     'create', 'store', 'update', 'destroy'
 ]);
+
+Route::auth();
+Route::guest();
+Route::check();
+
+Route::get('/home', 'HomeController@index')->name('home');
