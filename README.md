@@ -19,3 +19,8 @@
 ## start project
 1. php artisan serve
 2. go to localhost:8000 in browser
+
+## automatically compiling the app.scss file 
+1. open another terminal in the project repo
+2. run 'npm run watch' 
+3. everytime you change something in the scss file, save it and refresh the page

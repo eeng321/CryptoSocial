@@ -25,6 +25,8 @@
                     <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="#">Profile</a>
                     <a class="nav-item nav-link" href="#">Community</a>
+                    {{-- Vu change this Login anchor to whatever you need--}}
+                    <a class="nav-item nav-link" href="#">Login</a>
                 </div>
             </div>
       
@@ -34,6 +36,9 @@
             </form>
 
         </nav>    
+        @show
+
+        @section('content')
         @show
     </body>
 
