@@ -22,10 +22,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="nav navbar-nav text-center">
-                    <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="#">Profile</a>
-                    <a class="nav-item nav-link" href="#">Community</a>
+                    <a class="nav-item nav-link" href="/">Home</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="commDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Community
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="commDropdown">
+                            <a class="dropdown-item" href="watchlist">Watchlist</a>
+                            <a class="dropdown-item" href="trades">Trades</a>
+                        </div>
+                    </li>
                     {{-- Vu change this Login anchor to whatever you need--}}
+                    {{-- Once loggeed in, you can click on it to go to profiles page --}}
                     <a class="nav-item nav-link" href="#">Login</a>
                 </div>
             </div>

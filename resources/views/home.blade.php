@@ -31,4 +31,6 @@
             </div>
         </div>    
     </div>
+
+    {{-- Connect the news feed here --}}
 @endsection()

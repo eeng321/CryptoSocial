@@ -18,3 +18,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('watchlist', function() {
+    return view('watchlist');
+});
+
+Route::get('trades', function() {
+    return view('trades');
+});
