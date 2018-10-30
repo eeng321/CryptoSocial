@@ -11,8 +11,15 @@
 |
 */
 
+
+// first arg: The "URL Path" that the client is accessing
+// second arg: What executes accordingly
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Route::get('watchlist', function() {
+    return view('watchlist');
 });
 
 //array to register many resource controllers when we add more in the future
@@ -34,3 +41,8 @@ Route::guest();
 Route::check();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('trades', function() {
+    return view('trades');
+});
+
