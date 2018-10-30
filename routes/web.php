@@ -22,6 +22,27 @@ Route::get('watchlist', function() {
     return view('watchlist');
 });
 
+//array to register many resource controllers when we add more in the future
+Route::resources([
+    'users' => 'UserController'
+]);
+
+//user route
+Route::resource('users', 'UserController')->only([
+    'index', 'show'
+]);
+
+Route::resource('users', 'UserController')->except([
+    'create', 'store', 'update', 'destroy'
+]);
+
+Route::auth();
+Route::guest();
+Route::check();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('trades', function() {
     return view('trades');
 });
+
