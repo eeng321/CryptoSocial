@@ -5,3 +5,5 @@
 @section('navbar')    
 
 @section('content')
+
+@section('footer')

@@ -43,6 +43,24 @@
 
         @section('content')
         @show
+
+        @section('footer')
+        <footer class="section footer-classic font-small bg-image" style="background: black;">
+            <div class="container-fluid text-center text-md-left">
+                <div class="row" style="padding-top: 3vw; padding-bottom: 3vw;">
+                    <div class="col text-center align-self-center" style="color: white;">
+                        <h5 class="text-uppercase">Yeetly</h5>
+                        <p>The official website for the crypto-currency community</p>
+                        <br>
+                        <p>School of Computing Science</p>
+                        <p>Vancouver, B.C.</p>
+                        <br>
+                        <p>© 2018 Yeetly. All rights reserved. </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        @show
     </body>
 
     <script src="{{"js/app.js"}}"></script>
