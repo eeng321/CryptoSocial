@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Support\Facades\View;
+use Illuminate\Http\Request;
+use App\ApiNews;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +17,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $newsApi = new ApiNews;
+        $newsquery = urlencode("crypto or bitcoin");
+        $data = $newsApi->queryNews($newsquery);
+        View::share('news', $data);
     }
 
     /**
