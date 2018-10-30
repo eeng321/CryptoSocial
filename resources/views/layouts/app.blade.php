@@ -30,6 +30,7 @@
                         <div class="dropdown-menu" aria-labelledby="commDropdown">
                             <a class="dropdown-item" href="watchlist">Watchlist</a>
                             <a class="dropdown-item" href="trades">Trades</a>
+                            <a class="dropdown-item" href="userspage">Users</a>
                         </div>
                     </li>
                     {{-- Vu change this Login anchor to whatever you need--}}
@@ -37,12 +38,6 @@
                     <a class="nav-item nav-link" href="#">Login</a>
                 </div>
             </div>
-      
-            <form class="form-inline ml-auto">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search User" aria-label="Search User">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-
         </nav>    
         @show
 
