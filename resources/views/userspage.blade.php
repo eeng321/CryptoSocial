@@ -2,7 +2,7 @@
 
 @section('title', 'Users')
 
-@section('navbar')    
+@section('navbar')
 
 @section('content')
     @parent()

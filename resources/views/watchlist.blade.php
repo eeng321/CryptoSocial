@@ -2,7 +2,7 @@
 
 @section('title', 'Watchlist')
 
-@section('navbar')    
+@section('navbar')
 
 @section('content')
 
