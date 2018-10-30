@@ -30,7 +30,6 @@ Route::get('userspage', function() {
     return view('userspage');
 });
 
-Route::get('/news', 'ApiNewsController@cryptonews');
 //array to register many resource controllers when we add more in the future
 Route::resources([
     'users' => 'UserController'
