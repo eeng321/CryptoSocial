@@ -46,7 +46,7 @@
                             echo "<img class='card-img-thumb' src=".$news['articles'][$i]['urlToImage']." alt='Card image cap'>";
                             echo "<h2 class= 'card-title'>".$news['articles'][$i]['author']."</h2>";
                             echo "<p class= 'card-text news-card'>".$news['articles'][$i]['description']."</p>";
-                            echo  "<a class='btn btn-secondary' href=".$news['articles'][$i]['url']."role='button'>View details &raquo;</a>";
+                            echo  "<a class='btn btn-secondary' href=".$news['articles'][$i]['url']." role='button'>View details &raquo;</a>";
                             echo "</div>";
                             $i++;
                         }
