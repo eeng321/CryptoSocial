@@ -8,7 +8,7 @@
     <div id="carouselSlides" class="carousel slide" data-ride="caraousel">
         <div class="carousel-inner">
           <div class="carousel-item active">                
-            <img src="{{"img/placeholder.png"}}" width="100%" height"auto"/>
+            <img src="{{"img/placeholder.png"}}" width="100%" height="auto"/>
                <div class="carousel-caption">
                   <h1 style="font-size: 2.5em;">Yeetly</h1>
                       <p style="font-size: 1.5em;">The world's best crypto-currency community</p>
@@ -32,14 +32,30 @@
         </div>    
     </div>
 
-    <div class="container p-3">
-    @php
-    for($i = 0; $i < 10; $i++) {
-        echo "<div class='card'>";
-        echo "<h3 class='card-title text-center'>".$news['articles'][$i]['author']."</h3>";
-        echo "<p class='card-text text-center'>".$news['articles'][$i]['description']."</p>";
-        echo "<img class='card-img-top' src=".$news['articles'][$i]['urlToImage']." alt='Card image cap'></div>";
-    }
-    @endphp
+   <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="display-4 text-center">News Feed</h1>
+                    @php
+                    $i = 0;
+                    for($j = 0; $j < 3; $j++) {
+                        echo "<div class='row'>";
+                        
+                        for($k = 0; $k < 3; $k++) {
+                            echo "<div class='col-md-4'>";
+                            echo "<img class='card-img-thumb' src=".$news['articles'][$i]['urlToImage']." alt='Card image cap'>";
+                            echo "<h2 class= 'card-title'>".$news['articles'][$i]['author']."</h2>";
+                            echo "<p class= 'card-text news-card'>".$news['articles'][$i]['description']."</p>";
+                            echo  "<a class='btn btn-secondary' href=".$news['articles'][$i]['url']."role='button'>View details &raquo;</a>";
+                            echo "</div>";
+                            $i++;
+                        }
+                        
+                        echo "</div>";
+                        echo "<hr>";
+                    }
+                    @endphp
+            </div>
+        </div>    
     </div>
 @endsection()
