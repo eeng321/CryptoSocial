@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@include('login')
 @section('title', 'Home')
 
 @section('navbar')

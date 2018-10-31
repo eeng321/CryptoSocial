@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         {{-- Title Section --}}
         <title>Yeetly - @yield('title')</title>
         
@@ -35,7 +34,7 @@
                     </li>
                     {{-- Vu change this Login anchor to whatever you need--}}
                     {{-- Once loggeed in, you can click on it to go to profiles page --}}
-                    <a class="nav-item nav-link" href="#">Login</a>
+                    <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
                 </div>
             </div>
         </nav>    

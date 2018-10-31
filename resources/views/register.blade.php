@@ -14,7 +14,7 @@
 </head>
 <body>
   
-  <div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div id="registerModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -23,7 +23,7 @@
             </div>
             <div class="modal-body">
                 <!-- Can do method="POST" -->
-                <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="">
+                <form class="form" role="form" autocomplete="off" id="formRegister" novalidate="">
                     <div class="form-group">
                         <a href="" class="float-right">New user?</a>
                         <label for="uname1">Username</label>
@@ -50,4 +50,3 @@
   </div>
 </body>
 </html>
-
