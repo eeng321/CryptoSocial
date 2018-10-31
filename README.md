@@ -23,4 +23,11 @@
 ## automatically compiling the app.scss file 
 1. open another terminal in the project repo
 2. run 'npm run watch' 
-3. everytime you change something in the scss file, save it and refresh the page
+3. every time you change something in the scss file, save it and refresh the page
+
+## creating and connecting to database
+1. Install mysql if you don't already have it (https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html or https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html)
+2. Start and connect to your mysql server
+3. Create a database and call it whatever you want (e.g. yeetly)
+4. Change the appropriate fields in the .env file to point to your local database (i.e. DB_DATABASE, DB_USERNAME, and DB_PASSWORD)
+5. Create the database tables automatically by running `php artisan migrate`

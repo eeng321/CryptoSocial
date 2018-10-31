@@ -1,9 +1,9 @@
-{{-- @extends(layouts.app)  //templating 
+{{-- @extends(layouts.app)  //templating
 @section('title','YeetlyNews')
 @section('navbar')
     @parent() --}}
 {{-- simple html file for now --}}
-<?php 
+<?php
     use Carbon\Carbon;
     $articleList = $news['articles'];
 ?>
@@ -20,11 +20,11 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <style> 
+        <style>
             .articleitems {
                 padding: 10px;
                 text-align: center;
-                font-size: 15pt; 
+                font-size: 15pt;
             }
             .articleitems article {
                 display: inline-block;
@@ -54,11 +54,11 @@
         <section class="articleitems">
             @foreach($articleList as $newsitem)
             <article>
-                <img src="{{$newsitem['urlToImage']}}" /> 
+                <img src="{{$newsitem['urlToImage']}}" />
                 <div class="articleitem">
                     <h3>{{$newsitem['source']['name'].": ".$newsitem['title']}}</h3>
-                    <p class="articledetails"> 
-                        {{$newsitem['description']}} 
+                    <p class="articledetails">
+                        {{$newsitem['description']}}
                         <a href="{{$newsitem['url']}}" target="_blank"> more details </a>
                     </p>
                     <div class="articleauthor">
@@ -69,7 +69,7 @@
                         }
                         @endif
                     </div>
-                    <div class="articledate"> 
+                    <div class="articledate">
                         @if (!empty($newsitem['publishedAt']))
                             Date Published: {{ Carbon::parse($newsitem['publishedAt'])->format('l F jS Y \a\t h:i:s A')}}
                         @else
@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </article>
-            @endforeach 
+            @endforeach
             <p>Powered by <a href="https://newsapi.org" target="_blank">News API.org </a> </p>
         </section>
     </body>

@@ -2,7 +2,7 @@
 
 @section('title', 'Trade')
 
-@section('navbar')    
+@section('navbar')
 
 @section('content')
 

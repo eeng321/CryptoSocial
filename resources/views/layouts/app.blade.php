@@ -6,7 +6,7 @@
 
         {{-- Title Section --}}
         <title>Yeetly - @yield('title')</title>
-        
+
         {{-- Stylesheets --}}
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
         <link href="{{"css/app.css"}}" rel="stylesheet" type="text/css">
@@ -15,8 +15,8 @@
         {{-- Navbar Section--}}
         @section('navbar')
         <nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-dark">
-            <span class="navbar-brand mb-0 h1">Yeetly</span>    
-            
+            <span class="navbar-brand mb-0 h1">Yeetly</span>
+
             <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -38,7 +38,7 @@
                     <a class="nav-item nav-link" href="#">Login</a>
                 </div>
             </div>
-        </nav>    
+        </nav>
         @show
 
         @section('content')
