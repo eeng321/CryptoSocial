@@ -31,3 +31,4 @@
 3. Create a database and call it whatever you want (e.g. yeetly)
 4. Change the appropriate fields in the .env file to point to your local database (i.e. DB_DATABASE, DB_USERNAME, and DB_PASSWORD)
 5. Create the database tables automatically by running `php artisan migrate`
+(If you are using Windows, you may require to open the php.ini file and add "extension=php_pdo_mysql.dll" at the bottom of the page if it doesn't already exist)
