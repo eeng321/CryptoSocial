@@ -38,7 +38,8 @@
                 <h1 class="display-4 text-center">News Feed</h1>
                     @php
                     $i = 0;
-                    for($j = 0; $j < 3; $j++) {
+                    $j_max = 3;
+                    for($j = 0; $j < $j_max; $j++) {
                         echo "<div class='row'>";
                         
                         for($k = 0; $k < 3; $k++) {
@@ -52,7 +53,10 @@
                         }
                         
                         echo "</div>";
-                        echo "<hr>";
+                        if($j !== $j_max-1) {
+                            echo "<hr>";
+                        }
+                        
                     }
                     @endphp
             </div>

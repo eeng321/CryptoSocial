@@ -45,13 +45,14 @@
         @show
 
         @section('footer')
-        <footer class="section footer-classic font-small bg-image" style="background: black;">
+        <footer class="section footer-classic font-small bg-image">
             <div class="container-fluid text-center text-md-left">
-                <div class="row" style="padding-top: 3vw; padding-bottom: 3vw;">
-                    <div class="col text-center align-self-center" style="color: white;">
+                <div class="row" style="padding-top: 2.5vw; padding-bottom: 2.5vw;">
+                    <div class="col text-center align-self-center" style="color: black;">
                         <h5 class="text-uppercase">Yeetly</h5>
                         <p>The official website for the crypto-currency community</p>
                         <br>
+                        <p>Simon Fraser University</p>
                         <p>School of Computing Science</p>
                         <p>Vancouver, B.C.</p>
                         <br>
