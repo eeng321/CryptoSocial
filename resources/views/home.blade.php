@@ -19,40 +19,7 @@
         </div>
     </div>
 
-<<<<<<< HEAD
-   <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <h1 class="display-4 text-center">News Feed</h1>
-                    @php
-                    $i = 0;
-                    $j_max = 3;
-                    for($j = 0; $j < $j_max; $j++) {
-                        echo "<div class='row'>";
-
-                        for($k = 0; $k < 3; $k++) {
-                            echo "<div class='col-md-4'>";
-                            echo "<img class='card-img-thumb' src=".$news['articles'][$i]['urlToImage']." alt='Card image cap'>";
-                            echo "<h2 class= 'card-title'>".$news['articles'][$i]['author']."</h2>";
-                            echo "<p class= 'card-text news-card'>".$news['articles'][$i]['description']."</p>";
-                            echo  "<a class='btn btn-secondary' target='_blank' href=".$news['articles'][$i]['url']." role='button'>View details &raquo;</a>";
-                            echo "</div>";
-                            $i++;
-                        }
-
-                        echo "</div>";
-                        if($j !== $j_max-1) {
-                            echo "<hr>";
-                        }
-                        
-                    }
-                    @endphp
-            </div>
-        </div>
-    </div>
-=======
     @include('partials.home.newsfeed')
->>>>>>> 6-create-search-page
 @endsection()
 
 @section('footer')
