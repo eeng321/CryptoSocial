@@ -5,7 +5,7 @@
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2 pt-4 collapse hide" id= "collapsePost">
-                <form action="" method="POST">
+                <form action="">
                             
                     <div class="form-group">
                         <label for="title">Title <span class="require">*</span></label>
