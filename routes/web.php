@@ -27,9 +27,7 @@ Route::get('trades', function() {
     return view('trades');
 });
 
-Route::get('userspage', function() {
-    return view('userspage');
-});
+Route::get('userspage', 'SearchController@search');
 
 //array to register many resource controllers when we add more in the future
 Route::resources([
