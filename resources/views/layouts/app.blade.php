@@ -1,4 +1,7 @@
 <!doctype html>
+@include('auth/login')
+@include('auth/register')
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
