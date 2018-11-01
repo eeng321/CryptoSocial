@@ -1,5 +1,6 @@
 @extends('layouts.app')
-@include('login')
+@include('auth/login')
+@include('auth/register')
 @section('title', 'Home')
 
 @section('navbar')
