@@ -28,7 +28,7 @@ Route::get('trades', function() {
 });
 
 Route::get('userspage', function() {
-    $users = DB::table('users')->get();
+    $users = DB::table('users')->paginate(15);
     return view('userspage', ['users' => $users]);
 });
 
