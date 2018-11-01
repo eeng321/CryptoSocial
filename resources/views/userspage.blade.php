@@ -2,7 +2,7 @@
 
 @section('title', 'Users')
 
-@section('navbar')    
+@section('navbar')
 
 @section('content')
     @parent()
@@ -13,3 +13,5 @@
         </form>
     </div>
 @endsection()
+
+@section('footer')

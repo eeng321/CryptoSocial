@@ -15,7 +15,8 @@
 // first arg: The "URL Path" that the client is accessing
 // second arg: What executes accordingly
 Route::get('/', function () {
-    return view('home');
+    $userCount = DB::table('users')->count();
+    return view('home', ['userCount' => $userCount]);
 });
 
 Route::get('/login', function () {
@@ -47,7 +48,7 @@ Route::resource('users', 'UserController')->only([
 Route::resource('users', 'UserController')->except([
     'create', 'store', 'update', 'destroy'
 ]);
-/* 
+/*
 Route::auth();
 Route::guest();
 Route::check(); */
