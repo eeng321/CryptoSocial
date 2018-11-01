@@ -1,7 +1,4 @@
 <!doctype html>
-@include('auth/login')
-@include('auth/register')
-
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -70,6 +67,8 @@
         </footer>
         @show
     </body>
+    @include('auth/login')
+    @include('auth/register')
 
     <script src="{{"js/app.js"}}"></script>
 </html>
