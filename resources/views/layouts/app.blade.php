@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         {{-- Title Section --}}
         <title>Yeetly - @yield('title')</title>
 
@@ -35,7 +34,12 @@
                     </li>
                     {{-- Vu change this Login anchor to whatever you need--}}
                     {{-- Once loggeed in, you can click on it to go to profiles page --}}
-                    <a class="nav-item nav-link" href="#">Login</a>
+                    @if (Auth::guest())
+                    <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                    @else
+                    <a class="nav-item nav-link" href="#">{{ Auth::user()->name }}</a>
+                    <a class="nav-item nav-link" href="{{ url('/logout') }}">Logout</a>
+                    @endif
                 </div>
             </div>
         </nav>
@@ -63,6 +67,8 @@
         </footer>
         @show
     </body>
+    @include('auth/login')
+    @include('auth/register')
 
     <script src="{{"js/app.js"}}"></script>
 </html>
