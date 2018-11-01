@@ -16,7 +16,6 @@
                 
             <div class="card-body">
                 <h2 style="display:inline;">Yeetlers</h2>
-                {{-- Replace this with total users returned --}}
                 <span style="display:inline;">- {{$users->total()}} users returned</span>
                     
                 <hr>
