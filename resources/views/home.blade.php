@@ -19,21 +19,7 @@
         </div>
     </div>
 
-   <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <h1 class="display-4 text-center">News Feed</h1>
-                @if(count($news) > 0) 
-                    @foreach(array_chunk($news['articles'], 3) as $articles)
-                        <div class='row'>
-                            @each('partials.home.newsfeed', $articles, 'article')
-                        </div>
-                        <hr>
-                    @endforeach
-                @endif
-            </div>
-        </div>
-    </div>
+    @include('partials.home.newsfeed')
 @endsection()
 
 @section('footer')
