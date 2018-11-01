@@ -7,7 +7,7 @@
 @section('content')
     @parent()
     <div class="container p-3">
-        <form class="form-inline" method="get" action="web.php">
+        <form class="form-inline" method="get" action="">
             <input class="form-control mr-sm-2 ml-auto" name="searchUser" type="search" placeholder="User to search" aria-label="User to search">
             <button class="btn btn-outline-success my-2 my-sm-0" name="searchUserBtn" type="submit">Search</button>
         </form>

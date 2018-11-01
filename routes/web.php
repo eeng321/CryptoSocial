@@ -27,10 +27,12 @@ Route::get('trades', function() {
     return view('trades');
 });
 
-Route::get('userspage', function() {
-    $users = DB::table('users')->paginate(15);
-    return view('userspage', ['users' => $users]);
-});
+// Route::get('userspage', function() {
+//     $users = DB::table('users')->paginate(15);
+//     return view('userspage', ['users' => $users]);
+// });
+
+Route::get('userspage', 'SearchController@search');
 
 //array to register many resource controllers when we add more in the future
 Route::resources([
