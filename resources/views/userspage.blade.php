@@ -21,7 +21,18 @@
                     
                     <hr>
 
+                    <ul class="list-group">
                     {{-- This is where you display the rows of users --}}
+                    @php
+                        foreach($users as $user) {
+                            echo "<a href='#' class='list-group-item d-flex list-group-item-action justify-content-between align-items-center'>";
+                            echo $user->name;
+                            echo "<span class='badge badge-primary badge-pill'>0 trades</span>";
+                            echo "</a>";
+                        }
+                    @endphp
+                    {{-- End of for-loop --}}
+                    </ul>
                 </div>
             </div>
     </div>
