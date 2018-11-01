@@ -32,10 +32,6 @@ Route::get('userspage', function() {
     return view('userspage', ['users' => $users]);
 });
 
-Route::get('profile', function() {
-    return view('profile');
-});
-
 //array to register many resource controllers when we add more in the future
 Route::resources([
     'users' => 'UserController'
