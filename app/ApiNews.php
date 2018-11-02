@@ -24,7 +24,7 @@ class ApiNews extends Model
             $sevenDaysPrior = $sevenDaysPrior->format('Y-m-d');
             $currentDay = (new DateTime('now'))->format('Y-m-d');
             $newsApiKey = env('NEWS_API_KEY', '1964101075a947eeba907003b1bd5a4b');
-            $newsApiRequest = $client->request('GET','https://newsapi.org/v2/everything?q='.$queryString.
+            $newsApiRequest = $client->request('GET','//newsapi.org/v2/everything?q='.$queryString.
             '&from='.$sevenDaysPrior.'&to='.$currentDay.'&sortBy=popularity&apiKey='.$newsApiKey);
 
             $articleData = json_decode($newsApiRequest->getBody()->getContents(), true);
