@@ -14,7 +14,7 @@ class SearchController extends Controller
     {
         $this->userrequest = new UserRepository($user);
     }
-    public function search() 
+    public function search(Request $req) 
     {
         //check query
         $userList = null;
@@ -22,7 +22,8 @@ class SearchController extends Controller
             $query = $_GET['searchUser'];
             $userList = $this->userrequest->searchquery($query);
         } else {
-            $userList = $this->userrequest->paginateAll();
+
+            $userList = $this->userrequest->paginateAll($req);
         }
         $data['users'] = $userList;
         return view('userspage',$data);

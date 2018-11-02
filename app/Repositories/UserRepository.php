@@ -2,7 +2,8 @@
 
 namespace App\Repositories;
 
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 
 class UserRepository implements RepositoryInterface
@@ -20,9 +21,14 @@ class UserRepository implements RepositoryInterface
     {
         return $this->model::all();
     }
-    public function paginateAll()
+    public function paginateAll(Request $request)
     {
-        return $this->model::paginate($this::$paginationValue);
+        $page = $request->has('page') ? $request->query('page') : 1;
+        //dd($page);
+        $userList = Cache::remember('users_page_'.$page,15, function() {
+            return $this->model->paginate($this::$paginationValue);
+        });
+        return $userList;
     }
     public function create(array $userinfo) 
     {
