@@ -25,7 +25,8 @@ class UserRepository implements RepositoryInterface
     {
         $page = $request->has('page') ? $request->query('page') : 1;
         //dd($page);
-        $userList = Cache::remember('users_page_'.$page,15, function() {
+        //update list every 2 minutes 
+        $userList = Cache::remember('users_page_'.$page,2, function() {
             return $this->model->paginate($this::$paginationValue);
         });
         return $userList;
