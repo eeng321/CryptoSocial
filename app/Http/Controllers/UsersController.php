@@ -28,4 +28,14 @@ class UsersController extends Controller
         $data['users'] = $userList;
         return view('userspage',$data);
     }
+
+    public function show($id)
+    {
+        //display user profile 
+        // path: /users/{id/name ??} 
+        $displayedUser = $this->userrequest->getbyid($id);
+        dd($displayedUser);
+        $data['userProfile'] = $displayedUser;
+        return view('placeholder',$data);
+    }
 }
