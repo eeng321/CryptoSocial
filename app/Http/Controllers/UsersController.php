@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 
-class SearchController extends Controller
+class UsersController extends Controller
 {
     protected $userrequest;
     //
@@ -14,7 +14,7 @@ class SearchController extends Controller
     {
         $this->userrequest = new UserRepository($user);
     }
-    public function search(Request $req) 
+    public function index(Request $req) 
     {
         //check query
         $userList = null;

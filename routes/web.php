@@ -30,24 +30,24 @@ Route::get('trades', function() {
 // gets current auth()->user() shares for each view in $userData 
 Route::group(['middleware' => ['user_set']], function() {
     //routes that use ^ middleware defined in \App\Http\Kernel.php
-    Route::get('userspage', 'SearchController@search');
+    //user route
+    Route::resource('users', 'UsersController')->only([
+    'index', 'show'
+    ]);
 });
 
 
 
 //array to register many resource controllers when we add more in the future
-Route::resources([
-    'users' => 'UserController'
-]);
+// Route::resources([
+//     'users' => 'UserController'
+// ]);
 
-//user route
-Route::resource('users', 'UserController')->only([
-    'index', 'show'
-]);
 
-Route::resource('users', 'UserController')->except([
-    'create', 'store', 'update', 'destroy'
-]);
+
+// Route::resource('users', 'UserController')->except([
+//     'create', 'store', 'update', 'destroy'
+// ]);
 /*
 Route::auth();
 Route::guest();
