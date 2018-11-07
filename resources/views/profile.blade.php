@@ -1,4 +1,6 @@
 @extends('layouts.app')
+<!-- Include Charts -->
+<script type="text/javascript" src="{{ URL::asset('js/chart.js') }}"></script>
 
 @section('title', 'Profile')
 
@@ -56,45 +58,84 @@
                 <!--CUSTOM CHART START -->
                 <div class="border-head">
                     <h3>DAILY GAINS</h3>
-                  </div>
-                  <div class="custom-bar-chart">
+                </div>
+                <div class="custom-bar-chart">
                     <ul class="y-axis">
-                      <li><span>10,000</span></li>
-                      <li><span>8,000</span></li>
-                      <li><span>6,000</span></li>
-                      <li><span>4,000</span></li>
-                      <li><span>2,000</span></li>
-                      <li><span>0</span></li>
+                        <li><span>10,000</span></li>
+                        <li><span>8,000</span></li>
+                        <li><span>6,000</span></li>
+                        <li><span>4,000</span></li>
+                        <li><span>2,000</span></li>
+                        <li><span>0</span></li>
                     </ul>
                     <div class="bar">
-                      <div class="title">MON</div>
-                      <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top" style="height: 85%;">8500</div>
+                        <div class="title">MON</div>
+                        <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top" style="height: 85%;">8500</div>
                     </div>
                     <div class="bar ">
-                      <div class="title">TUES</div>
-                      <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top" style="height: 50%;">5000</div>
+                        <div class="title">TUES</div>
+                        <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top" style="height: 50%;">5000</div>
                     </div>
                     <div class="bar ">
-                      <div class="title">WED</div>
-                      <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top" style="height: 60%;">6000</div>
+                        <div class="title">WED</div>
+                        <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top" style="height: 60%;">6000</div>
                     </div>
                     <div class="bar ">
-                      <div class="title">THURS</div>
-                      <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top" style="height: 45%;">4500</div>
+                        <div class="title">THURS</div>
+                        <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top" style="height: 45%;">4500</div>
                     </div>
                     <div class="bar">
-                      <div class="title">FRI</div>
-                      <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top" style="height: 32%;">3200</div>
+                        <div class="title">FRI</div>
+                        <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top" style="height: 32%;">3200</div>
                     </div>
                     <div class="bar ">
-                      <div class="title">SAT</div>
-                      <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top" style="height: 62%;">6200</div>
+                        <div class="title">SAT</div>
+                        <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top" style="height: 62%;">6200</div>
                     </div>
                     <div class="bar">
-                      <div class="title">SUN</div>
-                      <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top" style="height: 75%;">7500</div>
+                        <div class="title">SUN</div>
+                        <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top" style="height: 75%;">7500</div>
                     </div>
-                  </div>
+                </div>
+                <!--custom chart end-->
+
+                <!-- chart panels -->
+                <div class="row mt">
+                    <!-- /col-md-4-->
+                    <div class="col-md-4 col-sm-4 mb">
+                        <div class="darkblue-panel pn">
+                            <div class="darkblue-header">
+                                <h5>WIN PERCENTAGE</h5>
+                            </div>
+                            <canvas id="serverstatus02" height="120" width="120"></canvas>
+                            <script>
+                                var doughnutData = [{
+                                    //wins
+                                    value: 128,
+                                    color: "#1c9ca7"
+                                },
+                                {
+                                    //losses
+                                    value: 72,
+                                    color: "#f68275"
+                                }
+                                ];
+                                var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
+                            </script>
+                            <!-- date of last trade OR add 2 line breaks-->
+                            <p>August 18, 2018</p>
+                            <footer>
+                                <div class="pull-left">
+                                <h5><i class="fa fa-sort"></i> 128 WINS</h5>
+                                </div>
+                                <div class="pull-right">
+                                <h5>64% WIN RATE</h5>
+                                </div>
+                            </footer>
+                        </div>
+                    <!--  /darkblue panel -->
+                    </div>
+                </div>
             </section>
         </div>
        
