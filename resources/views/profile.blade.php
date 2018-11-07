@@ -52,40 +52,49 @@
 
             <!-- Main Content -->
             <section id="content">
+
+                <!--CUSTOM CHART START -->
                 <div class="border-head">
-                    <h3 class="text-center">MENTOR SUGGESTIONS</h3>
-                </div>
-                <div class="row mt content-panel">
-                    <div class="col-md-4 profile-text mt mb centered">
-                        <div class="right-divider hidden-sm hidden-xs">
-                        <h4>1922</h4>
-                        <h6>FOLLOWERS</h6>
-                        <h4>290</h4>
-                        <h6>FOLLOWING</h6>
-                        <h4>$ 13,980</h4>
-                        <h6>MONTHLY EARNINGS</h6>
-                        </div>
+                    <h3>DAILY GAINS</h3>
+                  </div>
+                  <div class="custom-bar-chart">
+                    <ul class="y-axis">
+                      <li><span>10,000</span></li>
+                      <li><span>8,000</span></li>
+                      <li><span>6,000</span></li>
+                      <li><span>4,000</span></li>
+                      <li><span>2,000</span></li>
+                      <li><span>0</span></li>
+                    </ul>
+                    <div class="bar">
+                      <div class="title">MON</div>
+                      <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top" style="height: 85%;">8500</div>
                     </div>
-                    <!-- /col-md-4 -->
-                    <div class="col-md-4 profile-text">
-                        <h3>Squirtle</h3>
-                        <h6>Squirtle Squad Leader</h6>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
-                        <br>
-                        <p><button class="btn btn-theme"><i class="fa fa-envelope"></i> Send Message</button></p>
+                    <div class="bar ">
+                      <div class="title">TUES</div>
+                      <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top" style="height: 50%;">5000</div>
                     </div>
-                    <!-- /col-md-4 -->
-                    <div class="col-md-4 centered">
-                        <div class="profile-pic">
-                        <p><img src="{{"img/squirtle.png"}}" class="img-circle" width="150"></p>
-                        <p>
-                            <button class="btn btn-theme"><i class="fa fa-check"></i> Follow</button>
-                            <button class="btn btn-theme02">Add</button>
-                        </p>
-                        </div>
+                    <div class="bar ">
+                      <div class="title">WED</div>
+                      <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top" style="height: 60%;">6000</div>
                     </div>
-                    <!-- /col-md-4 -->
-                </div>   
+                    <div class="bar ">
+                      <div class="title">THURS</div>
+                      <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top" style="height: 45%;">4500</div>
+                    </div>
+                    <div class="bar">
+                      <div class="title">FRI</div>
+                      <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top" style="height: 32%;">3200</div>
+                    </div>
+                    <div class="bar ">
+                      <div class="title">SAT</div>
+                      <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top" style="height: 62%;">6200</div>
+                    </div>
+                    <div class="bar">
+                      <div class="title">SUN</div>
+                      <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top" style="height: 75%;">7500</div>
+                    </div>
+                  </div>
             </section>
         </div>
        
