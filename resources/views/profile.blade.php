@@ -5,52 +5,52 @@
 @section('title', 'Profile')
 
 @section('navbar')
+
+    <!-- Sidebar -->
+    <aside>
+        <div id="sidebar" class="nav-collapse" tabindex="5000" style="overflow:hidden; outline:none;">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+                <p class="centered"><a href="/profile"><img src="{{"img/pika.png"}}" class="img-circle" width="80"></a></p>
+                <h5 class="centered">Boku no Pika</h5>
+                <li>
+                    <a class="dcjq-parent" href="javascript:;">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="dcjq-parent" href="javascript:;">
+                        <i class="fa fa-rocket"></i>
+                        <span>Trades</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="dcjq-parent" href="javascript:;">
+                        <i class="fa fa-sticky-note"></i>
+                        <span>Watchlist</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a class="dcjq-parent" href="javascript:;">
+                        <i class="fa fa-comments-o"></i>
+                        <span>Chat Room</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="lobby.html">Lobby</a></li>
+                        <li><a href="chat_room.html"> Chat Room</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    <!-- sidebar menu end-->
+    </aside>
     @parent()
 @endsection
 
 @section('content')
 
         <div class="wrapper">
-            <!-- Sidebar -->
-            <aside>
-                <div id="sidebar" class="nav-collapse " tabindex="5000" style="overflow:hidden; outline:none;">
-                  <!-- sidebar menu start-->
-                  <ul class="sidebar-menu" id="nav-accordion">
-                    <p class="centered"><a href="/profile"><img src="{{"img/pika.png"}}" class="img-circle" width="80"></a></p>
-                    <h5 class="centered">Boku no Pika</h5>
-                    <li>
-                        <a class="dcjq-parent" href="javascript:;">
-                            <i class="fa fa-dashboard"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dcjq-parent" href="javascript:;">
-                            <i class="fa fa-rocket"></i>
-                            <span>Trades</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dcjq-parent" href="javascript:;">
-                            <i class="fa fa-sticky-note"></i>
-                            <span>Watchlist</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a class="dcjq-parent" href="javascript:;">
-                            <i class="fa fa-comments-o"></i>
-                            <span>Chat Room</span>
-                        </a>
-                      <ul class="sub">
-                            <li><a href="lobby.html">Lobby</a></li>
-                            <li><a href="chat_room.html"> Chat Room</a></li>
-                      </ul>
-                    </li>
-                
-                  </ul>
-                  <!-- sidebar menu end-->
-                </div>
-              </aside>
 
             <!-- Main Content -->
             <section id="content">
@@ -101,13 +101,13 @@
 
                 <!-- chart panels -->
                 <div class="row mt">
-                    <!-- /col-md-4-->
+                    <!-- darkblue win percentage panel-->
                     <div class="col-md-4 col-sm-4 mb">
                         <div class="darkblue-panel pn">
                             <div class="darkblue-header">
                                 <h5>WIN PERCENTAGE</h5>
                             </div>
-                            <canvas id="serverstatus02" height="120" width="120"></canvas>
+                            <canvas id="donutWin" height="120" width="120"></canvas>
                             <script>
                                 var doughnutData = [{
                                     //wins
@@ -120,7 +120,7 @@
                                     color: "#f68275"
                                 }
                                 ];
-                                var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
+                                var myDoughnut = new Chart(document.getElementById("donutWin").getContext("2d")).Doughnut(doughnutData);
                             </script>
                             <!-- date of last trade OR add 2 line breaks-->
                             <p>August 18, 2018</p>
@@ -135,6 +135,72 @@
                         </div>
                     <!--  /darkblue panel -->
                     </div>
+                    <!--  portfolio grey panel -->
+                    <div class="col-md-4 col-sm-4 mb">
+                        <div class="grey-panel pn donut-chart">
+                            <div class="grey-header">
+                                <h5>PORTFOLIO</h5>
+                            </div>
+                            <!-- left side of panel -->
+                            <div class="panel-left">
+                                <div class="d-inline-block"> 
+                                    <canvas id="donutPortfolio" height="120" width="120"></canvas>
+                                        <script>
+                                        var doughnutData = [{
+                                                value: 42,
+                                                color: "#f66D9b"
+                                            },
+                                            {
+                                                value: 10,
+                                                color: "#fdfdfd"
+                                            },
+                                            {
+                                                value: 38,
+                                                color: "#4fd98b"
+                                            },
+                                            {
+                                                value: 8,
+                                                color: "#9561e2"
+                                            },
+                                            {
+                                                value: 4,
+                                                color: "#6cb2eb"
+                                            }
+                                        ];
+                                        var myDoughnut2 = new Chart(document.getElementById("donutPortfolio").getContext("2d")).Doughnut(doughnutData);
+                                        </script>
+                                        <footer>
+                                            <h5>Distribution</h5>
+                                        </footer>
+                                </div>
+                             
+                            </div>
+                             <!-- right side of panel -->
+                            <div class="panel-right">
+                                <div class="d-inline-block"> 
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            BTC
+                                        </li>
+                                        <li class="list-group-item">
+                                            ETH
+                                        </li>
+                                        <li class="list-group-item">
+                                            LTC
+                                        </li>
+                                        <li class="list-group-item">
+                                            NEO
+                                        </li>
+                                        <li class="list-group-item">
+                                            XRP
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /grey-panel -->
+                    </div>
+                    
                 </div>
             </section>
         </div>

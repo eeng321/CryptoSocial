@@ -586,3 +586,35 @@ ul.my-friends li .friends-pic {
 	font-weight: 700;
 }
 
+// Grey Panel
+
+.grey-panel {
+	text-align: center;
+    background: #e9f0f4;
+    width: 200%;
+}
+.grey-panel .grey-header {
+	background: #54bae6;
+    padding: 3px;
+	margin-bottom: 15px;
+}
+.grey-panel h5 {
+	font-weight: 200;
+	margin-top: 10px;
+	color: black;
+}
+.grey-panel footer h5 {
+    font-weight: 700;
+}
+
+.grey-panel .panel-left{
+    float: left;
+    width: 50%;
+}
+
+.grey-panel .panel-right{
+    width: 50%;
+    height: 75%;
+    float: right;
+    overflow: auto;
+}
