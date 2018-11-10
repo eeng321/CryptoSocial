@@ -17,7 +17,7 @@
 Route::get('/', function () {
     $userCount = DB::table('users')->count();
     return view('home', ['userCount' => $userCount]);
-});
+})->name('home');
 
 Route::get('watchlist', function() {
     return view('watchlist');
@@ -27,9 +27,14 @@ Route::get('trades', function() {
     return view('trades');
 });
 
+Route::group(['middleware' => ['auth']], function() {
+    //routes that need authentification go here tested with profile page 
+});
+
 Route::get('profile', function() {
     return view('profile');
 });
+
 
 Route::get('userspage', 'SearchController@search');
 
