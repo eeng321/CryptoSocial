@@ -1,6 +1,7 @@
 @extends('layouts.app')
 <!-- Include Charts -->
 <script type="text/javascript" src="{{ URL::asset('js/chart.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/sparkline-chart.js') }}"></script>
 
 @section('title', 'Profile')
 
@@ -148,49 +149,42 @@
                                         <script>
                                         var doughnutData = [{
                                                 value: 42,
-                                                color: "#f66D9b"
+                                                color: "#4dc0b5"
                                             },
                                             {
                                                 value: 10,
-                                                color: "#fdfdfd"
+                                                color: "#343a40"
                                             },
                                             {
                                                 value: 38,
                                                 color: "#4fd98b"
                                             },
-                                            {
-                                                value: 8,
-                                                color: "#9561e2"
-                                            },
                                         ];
                                         var myDoughnut2 = new Chart(document.getElementById("donutPortfolio").getContext("2d")).Doughnut(doughnutData);
                                         </script>
                                         <footer>
-                                            <h5>Distribution</h5>
+                                            <h5>$17386</h5>
                                         </footer>
                                 </div>
                              
                             </div>
                              <!-- right side of panel -->
                             <div class="panel-right">
-                                <div class= "scrollbar scrollbar-morpheus-den">
-                                <div class="col-md-8 col-md-offset-2">
-                                    <h5>Bitcoin (42%)</h5>
+                                <div id="portfolio-scroll">
+                                <div class="col-md-12 col-md-offset-2">
+                                    <h5>BTC <span class="value-up"><i class="fa fa-caret-up hidden-sm hidden-xs"> 3.22%</i></span></h5>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100" style="width: 42%"></div>
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100" style="width: 46%"></div>
                                     </div>
-                                    <h5>Litecoin (38%)</h5>
+                                    <h5>LTC <span class="value-up"><i class="fa fa-caret-up hidden-sm hidden-xs"> 7.11%</i></span></h5>
                                     <div class="progress">
                                         <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" style="width: 38%"></div>
                                     </div>
-                                    <h5>Dogecoin (10%)</h5>
+                                    <h5>ETH <span class="value-down"><i class="fa fa-caret-down hidden-sm hidden-xs"> 1.79%</i></span></h5>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100" style="width: 16%"></div>
                                     </div>
-                                    <h5>Ripple (8%)</h5>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100" style="width: 8%"></div>
-                                    </div>
+                                    
                                 </div>
                                 </div>
                                 <!-- /col-md-8 -->
@@ -201,6 +195,8 @@
                     
                 </div>
             </section>
+
+            
         </div>
        
 
