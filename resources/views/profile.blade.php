@@ -162,10 +162,6 @@
                                                 value: 8,
                                                 color: "#9561e2"
                                             },
-                                            {
-                                                value: 4,
-                                                color: "#6cb2eb"
-                                            }
                                         ];
                                         var myDoughnut2 = new Chart(document.getElementById("donutPortfolio").getContext("2d")).Doughnut(doughnutData);
                                         </script>
@@ -177,25 +173,27 @@
                             </div>
                              <!-- right side of panel -->
                             <div class="panel-right">
-                                <div class="d-inline-block"> 
-                                    <ul class="list-group">
-                                        <li class="list-group-item">
-                                            BTC
-                                        </li>
-                                        <li class="list-group-item">
-                                            ETH
-                                        </li>
-                                        <li class="list-group-item">
-                                            LTC
-                                        </li>
-                                        <li class="list-group-item">
-                                            NEO
-                                        </li>
-                                        <li class="list-group-item">
-                                            XRP
-                                        </li>
-                                    </ul>
+                                <div class= "scrollbar scrollbar-morpheus-den">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <h5>Bitcoin (42%)</h5>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100" style="width: 42%"></div>
+                                    </div>
+                                    <h5>Litecoin (38%)</h5>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" style="width: 38%"></div>
+                                    </div>
+                                    <h5>Dogecoin (10%)</h5>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
+                                    </div>
+                                    <h5>Ripple (8%)</h5>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100" style="width: 8%"></div>
+                                    </div>
                                 </div>
+                                </div>
+                                <!-- /col-md-8 -->
                             </div>
                         </div>
                         <!-- /grey-panel -->
