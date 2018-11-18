@@ -29,7 +29,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="commDropdown">
                             <a class="dropdown-item" href="trades">Trades</a>
-                            <a class="dropdown-item" href="users">Users</a>
+                            <a class="dropdown-item" href="userspage">Users</a>
                         </div>
                     </li>
                     {{-- Vu change this Login anchor to whatever you need--}}
@@ -45,7 +45,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="userDropdown">
                             <!-- For you Edmond -->
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="{{ url('/user') }}">Profile</a>
                             <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
                         </div>
                     </li>
