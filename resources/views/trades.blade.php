@@ -14,7 +14,9 @@
         </div>
     </div>
 
+    @if (!Auth::guest())
     @include('partials.trades.createpost')
+    @endif
     @include('partials.trades.tradeposts')
     @endsection()
 @section('footer')

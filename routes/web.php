@@ -24,14 +24,17 @@ Route::get('watchlist', function() {
 });
 
 Route::get('trades', function() {
-    return view('trades');
+    $myId = DB::table('users')->where('email', 'ssalarda@sfu.ca' )->value('id');
+    $posts = DB::table('posts')->get();
+    return view('trades', ['myId' => $myId, 'posts' => $posts]);
 });
 
 Route::get('userspage', 'SearchController@search');
 
 //array to register many resource controllers when we add more in the future
 Route::resources([
-    'users' => 'UserController'
+    'users' => 'UserController',
+    'posts' => 'PostController'
 ]);
 
 //user route
@@ -42,6 +45,10 @@ Route::resource('users', 'UserController')->only([
 Route::resource('users', 'UserController')->except([
     'create', 'store', 'update', 'destroy'
 ]);
+
+//post route
+//Route::resource('posts', 'PostController');
+
 /*
 Route::auth();
 Route::guest();
