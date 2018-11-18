@@ -1,4 +1,8 @@
-<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" >
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" >
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,7 +11,7 @@
             </div>
             <div class="modal-body">
                 <!-- Adding style -->
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('login') }}" id="loginForm">
                     @csrf
                     <div class="form-group row">
                             <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -55,7 +59,7 @@
                                     {{ __('Login') }}
                                 </button>
                                 
-                                <a href="#" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="btn btn-link float-right">Register</a>
+                                <a href="#" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="btn btn-link float-right" id="regis">Register</a>
                                 <a class="btn btn-link float-right" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
@@ -67,5 +71,49 @@
         </div>
     </div>
 </div>
+
+<script>
+    (function() {
+        document.querySelector('#loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            clearErrors();
+            axios.post(this.action, {
+                'email': document.querySelector('#email').value,
+                'password': document.querySelector('#password').value
+            })
+            .then((response) => {
+                console.log('success');
+                window.location.href = "{{ route('login') }}";
+            })
+            .catch((error) => {
+                console.log(error.response);
+
+                const errors = error.response.data.errors;
+                const errorItem = Object.keys(errors);
+                const errorDOM = document.getElementById(errorItem);
+                const errorMessage = errors[errorItem][0];
+                console.log(errorMessage);
+
+                clearErrors();
+                
+                errorDOM.insertAdjacentHTML('afterend', `<div class="text-danger"> ${"Invalid email or password"}</div>`);
+            });
+        })
+
+        function clearErrors() {
+                // remove all error messages
+                const errorMessages = document.querySelectorAll('.text-danger')
+                errorMessages.forEach((element) => element.textContent = '')
+                // // remove all form controls with highlighted error text box
+                // const formControls = document.querySelectorAll('.form-control')
+                // formControls.forEach((element) => element.classList.remove('border', 'border-danger'))
+            }
+    })();
+
+</script>
+</body>
+</html>
+
+
             
 

@@ -34,11 +34,21 @@
                     </li>
                     {{-- Vu change this Login anchor to whatever you need--}}
                     {{-- Once loggeed in, you can click on it to go to profiles page --}}
+
+
                     @if (Auth::guest())
                     <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
                     @else
-                    <a class="nav-item nav-link" href="#">{{ Auth::user()->name }}</a>
-                    <a class="nav-item nav-link" href="{{ url('/logout') }}">Logout</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ Auth::user()->name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="userDropdown">
+                            <!-- For you Edmond -->
+                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
+                        </div>
+                    </li>
                     @endif
                 </div>
             </div>
