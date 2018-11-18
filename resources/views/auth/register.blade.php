@@ -125,6 +125,10 @@
 
     function clearForm(){
         document.getElementById("registerForm").reset();
+
+        const errorMessages = document.querySelectorAll('.text-danger')
+        errorMessages.forEach((element) => element.textContent = '')
+
     }
 
 </script>
