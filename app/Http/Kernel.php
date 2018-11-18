@@ -41,6 +41,10 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+        
+        'user_set' => [
+            \App\Http\Middleware\SetUserData::class,
+        ],
     ];
 
     /**
