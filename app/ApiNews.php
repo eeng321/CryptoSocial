@@ -17,14 +17,15 @@ class ApiNews extends Model
     {
         try  {
             $client = new GuzzleHttpClient();
-            //query the last week for news 
+            //query the last week for news
             //modify this to change the date range
             // todo? select box to adjust time range
             $sevenDaysPrior = new DateTime('7 days ago');
             $sevenDaysPrior = $sevenDaysPrior->format('Y-m-d');
             $currentDay = (new DateTime('now'))->format('Y-m-d');
-            $newsApiRequest = $client->request('GET','https://newsapi.org/v2/everything?q='.$queryString.
-            '&from='.$sevenDaysPrior.'&to='.$currentDay.'&sortBy=popularity&apiKey=1964101075a947eeba907003b1bd5a4b');
+            $newsApiKey = env('NEWS_API_KEY', '1964101075a947eeba907003b1bd5a4b');
+            $newsApiRequest = $client->request('GET','//newsapi.org/v2/everything?q='.$queryString.
+            '&from='.$sevenDaysPrior.'&to='.$currentDay.'&sortBy=popularity&apiKey='.$newsApiKey);
 
             $articleData = json_decode($newsApiRequest->getBody()->getContents(), true);
             return $articleData;
