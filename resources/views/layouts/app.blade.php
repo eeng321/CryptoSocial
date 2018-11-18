@@ -34,6 +34,8 @@
                     </li>
                     {{-- Vu change this Login anchor to whatever you need--}}
                     {{-- Once loggeed in, you can click on it to go to profiles page --}}
+
+
                     @if (Auth::guest())
                     <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
                     @else
