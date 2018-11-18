@@ -106,7 +106,7 @@
                     <div class="col-md-4 col-sm-4 mb">
                         <div class="darkblue-panel pn">
                             <div class="darkblue-header">
-                                <h5>WIN PERCENTAGE</h5>
+                                <h5>Trade Record</h5>
                             </div>
                             <canvas id="donutWin" height="120" width="120"></canvas>
                             <script>
@@ -196,7 +196,7 @@
                 </div>
             </section>
 
-            
+          
         </div>
        
 
