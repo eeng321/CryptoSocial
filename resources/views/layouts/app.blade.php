@@ -46,7 +46,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="userDropdown">
                             <!-- For you Edmond -->
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="{{ url('/user') }}">Profile</a>
                             <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
                         </div>
                     </li>

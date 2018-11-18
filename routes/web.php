@@ -31,7 +31,7 @@ Route::group(['middleware' => ['auth']], function() {
     //routes that need authentification go here tested with profile page 
 });
 
-Route::get('profile', function() {
+Route::get('user', function() {
     return view('profile');
 });
 
@@ -51,10 +51,6 @@ Route::resource('users', 'UserController')->only([
 Route::resource('users', 'UserController')->except([
     'create', 'store', 'update', 'destroy'
 ]);
-/*
-Route::auth();
-Route::guest();
-Route::check(); */
 
 Auth::routes();
 
