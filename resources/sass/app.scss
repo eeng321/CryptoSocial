@@ -9,22 +9,24 @@
 
 // News Feed 
 .blogShort{ 
-    padding: 15px 105px 15px 95px; /* 75px being the width of the thumbnail + how much space you want to put between it and your text */
+    padding: 15px 95px 15px 0; /* 75px being the width of the thumbnail + how much space you want to put between it and your text */
 	position: relative; /* So the thumbnail is relative to this */
     border-bottom:1px solid #ddd;
     border-top: 1px solid white; 
+    display: inline-block;
+    overflow:hidden;
 }
 
 .article-thumbnail{
-    top: 15%;
+    vertical-align: middle;
     left: 0;
-    position: absolute;
-    width: 4.0vw;
+    padding-right: 15px;
+    width: 9.0vw;
     height: auto;
 }
 
 .article-link {
-    top: 20%;
     right: 0;
     position: absolute;
+    top:40%;
 }

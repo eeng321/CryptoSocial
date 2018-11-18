@@ -1,12 +1,12 @@
 <?php 
     function displayArticle($article) {
         echo "<div class='row'>";
-        echo "<div class='col blogShort'>";
-        echo "<em><strong>".$article['author']."</strong></em>";
-        echo "<img class='rounded float-left article-thumbnail' src=".$article['urlToImage']." alt='Card image cap'>";
-        echo "<article><p>".$article['description']."</p></article>";
-        echo  "<a class='btn btn-secondary article-link' target='_blank' href=".$article['url']." role='button'>Read More</a>";
-        echo "</div>";        
+            echo "<div class='col blogShort'>";
+                echo "<img class='float-left rounded article-thumbnail' src=".$article['urlToImage']." alt='Card image cap'>";
+                echo "<em><strong>".$article['author']."</strong></em>";
+                echo "<article><p>".$article['description']."</p></article>";
+                echo  "<a class='float-right btn btn-secondary article-link' target='_blank' href=".$article['url']." role='button'>Read More</a>";
+            echo "</div>";        
         echo "</div>";
     }
 ?>
