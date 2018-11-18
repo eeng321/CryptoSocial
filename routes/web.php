@@ -19,17 +19,22 @@ Route::get('/', function () {
     return view('home', ['userCount' => $userCount]);
 });
 
-Route::get('watchlist', function() {
-    return view('watchlist');
-});
-
 Route::get('trades', function() {
     $myId = DB::table('users')->where('email', 'ssalarda@sfu.ca' )->value('id');
     $posts = DB::table('posts')->get();
     return view('trades', ['myId' => $myId, 'posts' => $posts]);
 });
+//testing sharing user_data across views
+// gets current auth()->user() shares for each view in $userData 
+Route::group(['middleware' => ['user_set']], function() {
+    //routes that use ^ middleware defined in \App\Http\Kernel.php
+    //user route
+    Route::resource('users', 'UsersController')->only([
+    'index', 'show'
+    ]);
+});
 
-Route::get('userspage', 'SearchController@search');
+
 
 //array to register many resource controllers when we add more in the future
 Route::resources([
@@ -37,18 +42,10 @@ Route::resources([
     'posts' => 'PostController'
 ]);
 
-//user route
-Route::resource('users', 'UserController')->only([
-    'index', 'show'
-]);
 
-Route::resource('users', 'UserController')->except([
-    'create', 'store', 'update', 'destroy'
-]);
-
-//post route
-//Route::resource('posts', 'PostController');
-
+// Route::resource('users', 'UserController')->except([
+//     'create', 'store', 'update', 'destroy'
+// ]);
 /*
 Route::auth();
 Route::guest();
@@ -57,4 +54,6 @@ Route::check(); */
 Auth::routes();
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+
 
