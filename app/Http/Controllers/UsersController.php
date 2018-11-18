@@ -38,4 +38,11 @@ class UsersController extends Controller
         $data['userProfile'] = $displayedUser;
         return view('placeholder',$data);
     }
+
+    //Geting Username for trades page
+    public static function getName($id)
+    {
+        $myName = \DB::table('users')->where('id', $id )->value('name');
+        return $myName;
+    }
 }

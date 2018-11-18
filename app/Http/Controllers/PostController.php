@@ -24,5 +24,6 @@ class PostController extends Controller
       $post->save();
       return redirect('/trades')->with('success', 'Post has been added');
     }
+    
 
 }

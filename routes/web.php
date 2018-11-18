@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('trades', function() {
-    $myId = DB::table('users')->where('email', 'ssalarda@sfu.ca' )->value('id');
+    $myId = DB::table('users')->where('id', Auth::user()->id )->value('id');
     $posts = DB::table('posts')->get();
     return view('trades', ['myId' => $myId, 'posts' => $posts]);
 });
