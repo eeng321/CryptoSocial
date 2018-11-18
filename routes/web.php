@@ -19,10 +19,6 @@ Route::get('/', function () {
     return view('home', ['userCount' => $userCount]);
 })->name('home');
 
-Route::get('watchlist', function() {
-    return view('watchlist');
-});
-
 Route::get('trades', function() {
     return view('trades');
 });

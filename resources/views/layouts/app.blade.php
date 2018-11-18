@@ -28,7 +28,6 @@
                           Community
                         </a>
                         <div class="dropdown-menu" aria-labelledby="commDropdown">
-                            <a class="dropdown-item" href="watchlist">Watchlist</a>
                             <a class="dropdown-item" href="trades">Trades</a>
                             <a class="dropdown-item" href="userspage">Users</a>
                         </div>
