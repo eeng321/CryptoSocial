@@ -21,9 +21,13 @@ Route::get('/', function () {
 
 Route::get('trades', function() {
     $myId = DB::table('users')->where('id', Auth::user()->id )->value('id');
-    $posts = DB::table('posts')->paginate(5);;
+    $posts = DB::table('posts')->latest()->paginate(5);;
     return view('trades', ['myId' => $myId, 'posts' => $posts]);
 });
+
+//Create Route for edit page
+
+
 //testing sharing user_data across views
 // gets current auth()->user() shares for each view in $userData 
 Route::group(['middleware' => ['user_set']], function() {

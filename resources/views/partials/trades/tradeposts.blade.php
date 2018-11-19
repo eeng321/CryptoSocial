@@ -12,7 +12,7 @@
                 <img src="{{"img/default.png"}}"alt="" class="mr-2 rounded" width="60" height="60">
                 <p class="media-body pb-3 mb-0  lh-125 border-bottom border-gray">
                     <strong class="d-block text-gray-dark">This is the Tiltle</strong>
-                    <strong class="d-block text-gray-dark">{{ UsersController::getName($post->author_id) }}</strong>
+                    <strong class="d-block text-gray-dark">{{ UsersController::getName($post->author_id) }} - {{$post->created_at}}</strong>
                     {{$post->content}}
                     <br>
                     <a class="d-block text-right mt-3" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="false" aria-controls="collapseExample">

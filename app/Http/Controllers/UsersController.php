@@ -38,6 +38,18 @@ class UsersController extends Controller
         $data['userProfile'] = $displayedUser;
         return view('placeholder',$data);
     }
+    //Delete this and implement update for edit page @Osborn
+    // public function update(Request $req)
+    // {
+    //     $user = null;
+    //     if(!empty($_POST['id'])) {
+    //         \DB::table('users')->where('id', $_POST['id']) ->update(['name' => $_POST['name'], 'password' => $_POST['password']]);
+
+    //     }
+    //     $data['user'] = $user;
+    //     return view('edit',$data);
+
+    // }
 
     //Geting Username for trades page
     public static function getName($id)
