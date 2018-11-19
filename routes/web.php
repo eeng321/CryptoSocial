@@ -28,14 +28,16 @@ Route::get('trades', function() {
 Route::group(['middleware' => ['user_set']], function() {
     //routes that use ^ middleware defined in \App\Http\Kernel.php
     //user route
+    Route::get('users/{id}/dashboard', 'UsersController@dashboard');
+    Route::get('users/{id}/trades', 'UsersController@myTrades');
+    Route::get('users/{id}/watchlist', 'UsersController@myWatchlist');
+    Route::get('users/{id}/chat', 'UsersController@chat');
     Route::resource('users', 'UsersController')->only([
-    'index', 'show'
+    'index', 'show', 'myWatchlist', 'dashboard', 'myTrades', 'chat'
     ]);
 });
 
-Route::get('user', function() {
-    return view('profile');
-});
+
 
 Auth::routes();
 

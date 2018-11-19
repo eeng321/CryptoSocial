@@ -29,6 +29,14 @@
     overflow: scroll;
 }
 
+nav{
+    z-index: 1;
+}
+
+footer{
+    z-index: -1;
+}
+
 // Profile page
 .wrapper {
     width: 100%;
@@ -47,6 +55,7 @@
     position: fixed;
     background: #2f323a;
     float: left;
+    z-index: 1;
 }
 
 #sidebar h5 {
@@ -627,3 +636,4 @@ ul.my-friends li .friends-pic {
 .value-down {
     color: #ec1f1f;
 }
+

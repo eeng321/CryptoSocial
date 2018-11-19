@@ -34,8 +34,49 @@ class UsersController extends Controller
         //display user profile 
         // path: /users/{id/name ??} 
         $displayedUser = $this->userrequest->getbyid($id);
-        dd($displayedUser);
+      //  dd($displayedUser);
         $data['userProfile'] = $displayedUser;
-        return view('placeholder',$data);
+        return view('profile',$data);
+    }
+
+    public function myWatchlist($id)
+    {
+        //display user profile 
+        // path: /users/{id/name ??} 
+        $displayedUser = $this->userrequest->getbyid($id);
+      //  dd($displayedUser);
+        $data['userProfile'] = $displayedUser;
+        return view('partials/profile/myWatchlist',$data);
+    }
+
+    
+    public function dashboard($id)
+    {
+        //display user profile 
+        // path: /users/{id/name ??} 
+        $displayedUser = $this->userrequest->getbyid($id);
+      //  dd($displayedUser);
+        $data['userProfile'] = $displayedUser;
+        return view('partials/profile/dashboard',$data);
+    }
+
+    public function myTrades($id)
+    {
+        //display user profile 
+        // path: /users/{id/name ??} 
+        $displayedUser = $this->userrequest->getbyid($id);
+      //  dd($displayedUser);
+        $data['userProfile'] = $displayedUser;
+        return view('partials/profile/myTrades',$data);
+    }
+
+    public function chat($id)
+    {
+        //display user profile 
+        // path: /users/{id/name ??} 
+        $displayedUser = $this->userrequest->getbyid($id);
+      //  dd($displayedUser);
+        $data['userProfile'] = $displayedUser;
+        return view('partials/profile/chat',$data);
     }
 }
