@@ -51,7 +51,8 @@ Route::group(['middleware' => ['user_set']], function() {
 //array to register many resource controllers when we add more in the future
 Route::resources([
     'users' => 'UsersController',
-    'posts' => 'PostController'
+    'posts' => 'PostController',
+    'replies' => 'ReplyController',
 ]);
 
 

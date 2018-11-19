@@ -13,12 +13,12 @@ class PostController extends Controller
     {
       $request->validate([
         'author_id'=>'required',
-       //'title'=> 'required',
+        'title'=> 'required',
         'content' => 'required'
       ]);
       $post = new Post([
         'author_id' => $request->get('author_id'),
-       // 'title'=> $request->get('title'),
+        'title'=> $request->get('title'),
         'content'=> $request->get('content')
       ]);
       $post->save();

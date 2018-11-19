@@ -19,7 +19,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="description">Description</label>
+                        <label for="description">Description<span class="require">*</span></label>
                         <textarea rows="5" class="form-control" name="content" ></textarea>
                     </div>
                     
