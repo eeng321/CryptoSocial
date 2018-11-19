@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -38,18 +39,25 @@ class UsersController extends Controller
         $data['userProfile'] = $displayedUser;
         return view('placeholder',$data);
     }
-    //Delete this and implement update for edit page @Osborn
-    // public function update(Request $req)
-    // {
-    //     $user = null;
-    //     if(!empty($_POST['id'])) {
-    //         \DB::table('users')->where('id', $_POST['id']) ->update(['name' => $_POST['name'], 'password' => $_POST['password']]);
 
-    //     }
-    //     $data['user'] = $user;
-    //     return view('edit',$data);
+    public function edit()
+    {
+        return view('edit');
+    }
+    public function update(Request $req)
+    {
+        $req_info = $req->only(['id','name', 'password']);
+        // dd($req_info);
+        $update_data = [
+            'name' => $req_info['name'],
+            'password' => Hash::make($req_info['password']),
+        ];
+        $this->userrequest->update($update_data, $req_info['id']);
+        $data['new_name'] = $req_info['name'];
+        return redirect()->to('edit');
 
-    // }
+    }
+
 
     //Geting Username for trades page
     public static function getName($id)

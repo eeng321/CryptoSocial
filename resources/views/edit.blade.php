@@ -15,16 +15,16 @@
                       
                   
         
-                    <input type='hidden' name='id' value='{{Auth::user()}}->id'>
+                    <input type='hidden' name='id' value='{{isset($new_name) ? $new_name : $userData->id}}'>
              
                     <div class="form-group">
                         <label for="Name">Name<span class="require">*</span></label>
-                        <input type="text" class="form-control" value='{{Auth::user()->name}}' name = "name" required/>
+                        <input type="text" class="form-control" value='{{$userData->name}}' name = "name" required/>
                     </div>
                     
                     <div class="form-group">
                         <label for="Name">Email<span class="require">*</span></label>
-                        <input type="text" class="form-control" value='{{ Auth::user()->email }}' name = "name" required readonly/>
+                        <input type="text" class="form-control" value='{{ $userData->email }}' name = "email" required readonly/>
                     </div>
 
                     <div class="form-group">
