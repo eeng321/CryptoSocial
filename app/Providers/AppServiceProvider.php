@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\ApiNews;
+use App\CoinsInfo;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,9 @@ class AppServiceProvider extends ServiceProvider
         $newsquery = urlencode("crypto or bitcoin");
         $data = $newsApi->queryNews($newsquery);
         View::share('news', $data);
+
+        $coinsApi = new CoinsInfo;
+        View::share('Coins', $coinsApi);
     }
 
     /**
