@@ -1,5 +1,4 @@
 <div class="wrapper">
-
         <!-- Main Content -->
         <section id="content">
 
@@ -113,21 +112,21 @@
                                         <h5>$171386</h5>
                                     </footer>
                             </div>
-                         
+                    
                         </div>
                          <!-- right side of panel -->
                         <div class="panel-right">
                             <div id="portfolio-scroll">
                             <div class="col-md-12 col-md-offset-2">
-                                <h5>BTC <span class="value-up"><i class="fa fa-caret-up hidden-sm hidden-xs"> 3.22%</i></span></h5>
+                            <h5>BTC - ${{round($Coins->getCoinPrice("Bitcoin"),2)}} <span class="value-up"><i class="fa fa-caret-up hidden-sm hidden-xs"> </i></span></h5>
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100" style="width: 46%"></div>
                                 </div>
-                                <h5>LTC <span class="value-up"><i class="fa fa-caret-up hidden-sm hidden-xs"> 7.11%</i></span></h5>
+                                <h5>LTC - ${{round($Coins->getCoinPrice("Litecoin"),2)}} <span class="value-up"><i class="fa fa-caret-up hidden-sm hidden-xs"> 7.11%</i></span></h5>
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" style="width: 38%"></div>
                                 </div>
-                                <h5>ETH <span class="value-down"><i class="fa fa-caret-down hidden-sm hidden-xs"> 1.79%</i></span></h5>
+                                <h5>ETH - ${{round($Coins->getCoinPrice("Ethereum"),2)}} <span class="value-down"><i class="fa fa-caret-down hidden-sm hidden-xs"> 1.79%</i></span></h5>
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100" style="width: 16%"></div>
                                 </div>

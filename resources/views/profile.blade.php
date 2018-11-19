@@ -1,3 +1,5 @@
+<!-- Inspired by Dashio template -->
+
 @extends('layouts.app')
 <!-- Include Charts -->
 <script type="text/javascript" src="{{ URL::to('js/chart.js') }}"></script>
