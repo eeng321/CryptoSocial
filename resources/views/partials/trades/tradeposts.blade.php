@@ -33,6 +33,7 @@
                             <br>
                         </div>
                         @endforeach
+                        @if (!Auth::guest())
                         <form method="POST" action="{{ route('replies.store') }}">
                         @csrf
                                 <input type='hidden' name='post_id' value={{ $post->id }}>
@@ -43,6 +44,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
+                        @endif
                     </div>
                 </div>
             @endforeach

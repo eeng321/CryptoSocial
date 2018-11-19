@@ -10,7 +10,7 @@ class ReplyController extends Controller
 
     public static function getReplies($id){
        // $replyList = null;
-        $replies = \DB::table('replies')->where('post_id', $id)->oldest()->paginate(3);
+        $replies = \DB::table('replies')->where('post_id', $id)->oldest()->paginate(100);
         return $replies;
     }
 

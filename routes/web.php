@@ -20,8 +20,10 @@ Route::get('/', function () {
 });
 
 Route::get('trades', function() {
-    $myId = DB::table('users')->where('id', Auth::user()->id )->value('id');
-    $posts = DB::table('posts')->latest()->paginate(5);;
+    $myId = null;
+    if (!Auth::guest())
+        $myId = DB::table('users')->where('id', Auth::user()->id )->value('id');
+    $posts = DB::table('posts')->latest()->paginate(15);;
     return view('trades', ['myId' => $myId, 'posts' => $posts]);
 });
 
