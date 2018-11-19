@@ -10,7 +10,10 @@
 
             @foreach($posts as $post) 
             <div class="media text-muted pt-3">
-                <img src="{{"img/default.png"}}"alt="" class="mr-2 rounded" width="60" height="60">
+                @php
+                    $avatar = 'storage/avatars/' . UsersController::getAvatar($post->author_id);
+                @endphp
+                <img src='{{ $avatar }}' alt="" class="mr-2 rounded" width="60" height="60">
                 <p class="media-body pb-3 mb-0  lh-125 border-bottom border-gray">
                     <strong class="d-block text-gray-dark">{{$post->title}}</strong>
                     <strong class="d-block text-gray-dark">{{ UsersController::getName($post->author_id) }} - {{$post->created_at}}</strong>
@@ -24,8 +27,11 @@
                     <div class="card-body">
                         <h6 class="border-bottom border-gray pb-2 mb-0">Replies</h6>
                         @foreach(ReplyController::getReplies($post->id) as $reply) 
+                        @php
+                            $avatar = 'storage/avatars/' . UsersController::getAvatar($reply->user_id);
+                        @endphp
                             <div class="media text-muted pt-3">
-                            <img src="{{"img/default.png"}}"alt="" class="mr-2 rounded" width="60" height="60">
+                            <img src='{{$avatar}}'alt="" class="mr-2 rounded" width="60" height="60">
                             <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
                                 <strong class="d-block text-gray-dark">{{ UsersController::getName($reply->user_id) }} - {{$reply->created_at}}</strong>
                                 {{$reply->content}}

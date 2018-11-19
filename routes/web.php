@@ -29,8 +29,6 @@ Route::get('trades', function() {
     return view('trades', ['myId' => $myId, 'posts' => $posts]);
 });
 
-//Create Route for edit page
-
 
 
 

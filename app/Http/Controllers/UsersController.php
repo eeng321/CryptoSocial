@@ -46,12 +46,28 @@ class UsersController extends Controller
     }
     public function update(Request $req)
     {
-        $req_info = $req->only(['id','name', 'password']);
-        // dd($req_info);
-        $update_data = [
-            'name' => $req_info['name'],
-            'password' => Hash::make($req_info['password']),
-        ];
+        $req_info = $req->only(['id','name','password']);
+        
+        //image handler
+        if($req->hasFile('pic')){
+            $req->validate([
+                'pic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            $req->file('pic')->store('avatars');
+            $pathName = $req_info['id'].'_avatar'.'.'.$req->file('pic')->getClientOriginalExtension();
+            $req->file('pic')->storeAs('avatars',$pathName);
+            $update_data = [
+                'name' => $req_info['name'],
+                'avatar' => $pathName,
+                'password' => Hash::make($req_info['password']),
+            ];
+        }else{
+            $update_data = [
+                'name' => $req_info['name'],
+                'password' => Hash::make($req_info['password']),
+            ];
+        }
+       
         $this->userrequest->update($update_data, $req_info['id']);
         $data['new_name'] = $req_info['name'];
         return redirect()->to('edit');
@@ -65,4 +81,10 @@ class UsersController extends Controller
         $myName = \DB::table('users')->where('id', $id )->value('name');
         return $myName;
     }
+     //Geting Picture for trades page
+     public static function getAvatar($id)
+     {
+         $myPic = \DB::table('users')->where('id', $id )->value('avatar');
+         return $myPic;
+     }
 }
