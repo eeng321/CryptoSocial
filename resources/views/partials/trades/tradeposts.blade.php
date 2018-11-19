@@ -1,4 +1,5 @@
 <?php use App\Http\Controllers\UsersController; ?>
+<?php use App\Http\Controllers\ReplyController; ?>
 
 <div id="accordion">
     {{-- Filler. Implement a For loop to dynamically add updates--}}
@@ -11,26 +12,34 @@
             <div class="media text-muted pt-3">
                 <img src="{{"img/default.png"}}"alt="" class="mr-2 rounded" width="60" height="60">
                 <p class="media-body pb-3 mb-0  lh-125 border-bottom border-gray">
-                    <strong class="d-block text-gray-dark">This is the Tiltle</strong>
+                    <strong class="d-block text-gray-dark">{{$post->title}}</strong>
                     <strong class="d-block text-gray-dark">{{ UsersController::getName($post->author_id) }} - {{$post->created_at}}</strong>
                     {{$post->content}}
                     <br>
-                    <a class="d-block text-right mt-3" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <a class="d-block text-right mt-3" data-toggle="collapse" href="#collapse{{$post->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                         Comments</a>
                 </p>
             </div>
-             <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+             <div id="collapse{{$post->id}}" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
-                        <div class="media text-muted pt-3">
-                        <img src="{{"img/default.png"}}"alt="" class="mr-2 rounded" width="60" height="60">
-                        <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-                            <strong class="d-block text-gray-dark">@username</strong>
-                            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-                        </p>
+                        <h6 class="border-bottom border-gray pb-2 mb-0">Replies</h6>
+                        @foreach(ReplyController::getReplies($post->id) as $reply) 
+                            <div class="media text-muted pt-3">
+                            <img src="{{"img/default.png"}}"alt="" class="mr-2 rounded" width="60" height="60">
+                            <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
+                                <strong class="d-block text-gray-dark">{{ UsersController::getName($reply->user_id) }} - {{$reply->created_at}}</strong>
+                                {{$reply->content}}
+                            </p>
+                            <br>
                         </div>
-                        <form class>
+                        @endforeach
+                        <form method="POST" action="{{ route('replies.store') }}">
+                        @csrf
+                                <input type='hidden' name='post_id' value={{ $post->id }}>
+                                <input type='hidden' name='user_id' value='{{ $myId }}'>
+
                                 <div class="form-group small">
-                                    <input class="form-control" type="text" placeholder="Enter Comment" />
+                                    <input class="form-control" type="text" placeholder="Enter Comment" name="content"/>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

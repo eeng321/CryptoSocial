@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Reply extends Model
 {
     protected $fillable = [
-        'author_id','title', 'content',
+        'post_id','user_id', 'content',
     ];
 }
