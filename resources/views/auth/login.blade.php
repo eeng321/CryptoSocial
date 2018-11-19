@@ -7,7 +7,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Login</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="clearLoginForm()">×</button>
             </div>
             <div class="modal-body">
                 <!-- Adding style -->
@@ -109,6 +109,14 @@
                 // formControls.forEach((element) => element.classList.remove('border', 'border-danger'))
             }
     })();
+
+    function clearLoginForm(){
+        document.getElementById("loginForm").reset();
+
+        const errorMessages = document.querySelectorAll('.text-danger')
+        errorMessages.forEach((element) => element.textContent = '')
+
+    }
 
 </script>
 </body>
