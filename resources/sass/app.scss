@@ -10,23 +10,33 @@
 // Font Awesome
 @import '~font-awesome/scss/font-awesome.scss';
 
-
-.col-md-4 {
-    /* -webkit-box-flex: 0; */
-    -ms-flex: 0 0 33.333333%;
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
+// News Feed 
+.blogShort{ 
+    padding: 15px 115px 15px 0; /* 75px being the width of the thumbnail + how much space you want to put between it and your text */
+	position: relative; /* So the thumbnail is relative to this */
+    border-bottom:1px solid #ddd;
+    border-top: 1px solid white; 
+    display: inline-block;
+    overflow:hidden;
 }
 
-.card-img-thumb{
-    width: 100%;
-    height:200px;
-    border-radius: 25px;
+.article-thumbnail{
+    vertical-align: middle;
+    left: 0;
+    padding-right: 15px;
+    width: 12.0vw;
+    height: auto;
 }
 
-.news-card{
-    height: 100px;
-    overflow: scroll;
+.article-link {
+    right: 0;
+    position: absolute;
+    top:40%;
+}
+
+.btn-show-more {
+    display: table; 
+    margin: 0 auto;
 }
 
 nav{
@@ -636,4 +646,9 @@ ul.my-friends li .friends-pic {
 .value-down {
     color: #ec1f1f;
 }
+
+/* .rembeddit {
+    height: 25%;
+    overflow: hidden;
+} */
 
