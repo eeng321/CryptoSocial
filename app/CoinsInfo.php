@@ -2,8 +2,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\CoinDetail;
 
 class CoinsInfo extends Model{
+
 
 	public function populateCoins() {
 		$coins_url = "https://api.coinmarketcap.com/v2/listings/";
@@ -14,7 +16,8 @@ class CoinsInfo extends Model{
 		return $coins_array;
 	}
 
-	public function getCoinPrice($coinName) {
+	public function getCoinDetail($coinName) {
+
 		$coins_url = "https://api.coinmarketcap.com/v2/listings/";
 
 		$coins_json = file_get_contents($coins_url);
@@ -35,8 +38,12 @@ class CoinsInfo extends Model{
 
 		
 		$coin_price = $coin['data']['quotes']['USD']['price'];
-		
-		return $coin_price;
+
+		$coinDetail = new CoinDetail();
+		$coinDetail->setPrice($coin['data']['quotes']['USD']['price']);
+		$coinDetail->setChangeIn24($coin['data']['quotes']['USD']['percent_change_24h']); 
+
+		return $coinDetail;
 	}
 	
 }
