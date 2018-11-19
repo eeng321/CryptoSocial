@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::get('trades', function() {
     $myId = DB::table('users')->where('id', Auth::user()->id )->value('id');
-    $posts = DB::table('posts')->get();
+    $posts = DB::table('posts')->paginate(5);;
     return view('trades', ['myId' => $myId, 'posts' => $posts]);
 });
 //testing sharing user_data across views
@@ -38,7 +38,7 @@ Route::group(['middleware' => ['user_set']], function() {
 
 //array to register many resource controllers when we add more in the future
 Route::resources([
-    'users' => 'UserController',
+    'users' => 'UsersController',
     'posts' => 'PostController'
 ]);
 

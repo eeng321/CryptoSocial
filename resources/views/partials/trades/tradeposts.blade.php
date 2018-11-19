@@ -37,15 +37,6 @@
                     </div>
                 </div>
             @endforeach
-            
-           
-
-        
-                        
-             
-            
-            <small class="d-block text-right mt-3">
-            <a href="#">All updates</a>
-            </small>
+        {{$posts->links()}}
         </div>
 </div>
