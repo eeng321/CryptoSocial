@@ -20,3 +20,12 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
+
+$('#showMoreBtn').click(function() {
+    if ($('#collapseArticles').hasClass('show')) {
+        $(this).text('Show More');
+    } else {
+        $(this).text('Show Less');
+    }
+});
+

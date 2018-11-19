@@ -16,9 +16,18 @@
                 </p>
             </div>
         </div>
+        {{-- <script src='https://www.reddit.com/r/CryptoCurrency.embed'></script> --}}
     </div>
-
     @include('partials.home.newsfeed')
+    
+    <div class='row' style='padding-top: 15px;'>
+        <div class='col'>
+            <script src='https://redditjs.com/subreddit.js' data-subreddit='CryptoCurrency'  ></script>
+        </div>
+        <div class='col'>
+            <script src='https://redditjs.com/subreddit.js' data-subreddit='CryptoCurrencyTrading'  ></script>
+        </div>        
+    </div>
 @endsection()
 
 @section('footer')
