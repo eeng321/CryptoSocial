@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UsersController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,11 +30,17 @@ Route::get('trades', function() {
 //Create Route for edit page
 
 
+
+
+
 //testing sharing user_data across views
 // gets current auth()->user() shares for each view in $userData 
 Route::group(['middleware' => ['user_set']], function() {
     //routes that use ^ middleware defined in \App\Http\Kernel.php
     //user route
+    Route::get('edit', 'UsersController@edit');
+    Route::post('edit', 'UsersController@update');
+
     Route::resource('users', 'UsersController')->only([
     'index', 'show'
     ]);
