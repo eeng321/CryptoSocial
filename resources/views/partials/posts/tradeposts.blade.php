@@ -4,11 +4,11 @@
 <div id="accordion">
     {{-- Filler. Implement a For loop to dynamically add updates--}}
 
-   
-        <div class="my-3 p-3 bg-white rounded shadow-sm">
-            <h6 class="border-bottom border-gray pb-2 mb-0">Recent Trades</h6>
 
-            @foreach($posts as $post) 
+        <div class="my-3 p-3 bg-white rounded shadow-sm">
+            <h6 class="border-bottom border-gray pb-2 mb-0">Recent Posts</h6>
+
+            @foreach($posts as $post)
             <div class="media text-muted pt-3">
                 @php
                     $avatar = 'storage/avatars/' . UsersController::getAvatar($post->author_id);
@@ -26,7 +26,7 @@
              <div id="collapse{{$post->id}}" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <h6 class="border-bottom border-gray pb-2 mb-0">Replies</h6>
-                        @foreach(ReplyController::getReplies($post->id) as $reply) 
+                        @foreach(ReplyController::getReplies($post->id) as $reply)
                         @php
                             $avatar = 'storage/avatars/' . UsersController::getAvatar($reply->user_id);
                         @endphp
