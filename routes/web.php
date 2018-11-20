@@ -36,6 +36,10 @@ Route::group(['middleware' => ['user_set']], function () {
 
     Route::get('edit', 'UsersController@edit');
     Route::post('edit', 'UsersController@update');
+
+    Route::resource('users', 'UsersController')->only([
+        'index', 'show', 'myWatchlist', 'dashboard', 'myTrades', 'chat'
+        ]);
     
     Route::resources([
         'users' => 'UsersController',
@@ -43,9 +47,7 @@ Route::group(['middleware' => ['user_set']], function () {
         'replies' => 'ReplyController',
     ]);
 
-    Route::resource('users', 'UsersController')->only([
-    'index', 'show', 'myWatchlist', 'dashboard', 'myTrades', 'chat'
-    ]);
+   
 });
 
 Auth::routes();

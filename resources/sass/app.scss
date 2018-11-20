@@ -591,7 +591,7 @@ ul.my-friends li .friends-pic {
 .darkblue-panel h1 {
 	color: #f2f2f2;
 }
-.darkblue-panel h5 {
+.darkblue-panel h4 {
 	font-weight: 200;
 	margin-top: 10px;
 	color: white;
@@ -613,15 +613,22 @@ ul.my-friends li .friends-pic {
     width: 200%;
 }
 .grey-panel .grey-header {
-	background: #54bae6;
+	background: #444c57;
     padding: 3px;
 	margin-bottom: 15px;
 }
 .grey-panel h5 {
-	font-weight: 200;
-	margin-top: 10px;
-	color: black;
+    font-weight: 200;
+    margin-top: 10px;
+    color: black;
 }
+
+.grey-panel h4{
+    font-weight: 200;
+	margin-top: 10px;
+	color: white;
+}
+
 .grey-panel footer h5 {
     font-weight: 700;
 }
@@ -646,6 +653,13 @@ ul.my-friends li .friends-pic {
 .value-down {
     color: #ec1f1f;
 }
+
+// coin portfolio legend color box
+.legend {
+    width: 15px;
+    height: 15px;
+}
+
 
 // CHAT ROOM 
 

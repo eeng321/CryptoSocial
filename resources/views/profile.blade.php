@@ -5,9 +5,32 @@
 <script type="text/javascript" src="{{ URL::to('js/chart.js') }}"></script>
 <!-- Replace contents -->
 <script type="text/javascript">
+    //change page content
     function load_main_content(content)
     {
         $('#replace').load('/users/'+{{Auth::user()->id}}+content);
+    }
+
+    //display change of coin in red or green
+    function displayChange24(change, divID){
+        if(change > 0 ){
+            document.getElementById(divID+"-up").style.display="inline";
+        }
+        else{
+            document.getElementById(divID+"-down").style.display="inline";
+        }
+    }
+
+    function addPortfolioItem(name){
+        var list = document.getElementById('portfolio');
+        var entry = document.getElementById('formPortfolio');
+        if(name != ""){
+            var coin = document.getElementById('coinName').value;
+            var entry = document.createElement('li');
+            entry.className = "form-inline"
+            entry.appendChild(document.createTextNode(coin));
+            list.appendChild(entry);
+        }
     }
 </script>
 
@@ -45,10 +68,6 @@
                         <i class="fa fa-comments-o"></i>
                         <span>Chat Room</span>
                     </a>
-                    <ul class="sub">
-                        <li><a href="lobby.html">Lobby</a></li>
-                        <li><a href="chat_room.html"> Chat Room</a></li>
-                    </ul>
                 </li>
             </ul>
         </div>
