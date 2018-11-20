@@ -26,9 +26,9 @@ class ReplyController extends Controller
         'content'=> $request->get('content')
       ]);
       $reply->save();
-      $path = "/trades?postId=" . $request->get('post_id');
+      $path = "/posts?postId=" . $request->get('post_id');
       return redirect($path)->with('success', 'Reply has been added');
     }
-    
+
 
 }
