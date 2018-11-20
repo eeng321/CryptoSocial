@@ -8,7 +8,13 @@
     //change page content
     function load_main_content(content)
     {
-        $('#replace').load('/users/'+{{Auth::user()->id}}+content);
+        if(Auth::guest()){
+            $('#replace').load('/users/'+$user->id+content);
+
+        }
+        else{
+            
+        }
     }
 
     //display change of coin in red or green
@@ -20,7 +26,41 @@
             document.getElementById(divID+"-down").style.display="inline";
         }
     }
+    //use for watchlist page
 
+    function addWatchlistItem(name){
+        <?php $results = $Coins->populateCoins() ?>
+        // Find a <table> element with id="myTable":
+        var table = document.getElementById("watchlistTable");
+
+        // Create an empty <tr> element and add it to the 1st position of the table:
+        var row = table.insertRow(-1);
+        var coin = document.getElementById('watchlistSearch').value;
+
+        // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+        var cellName = row.insertCell(-1);
+        var cellPrice = row.insertCell(-1);
+        var cellChange = row.insertCell(-1);
+
+
+        if(name != ""){
+            // Add some text to the new cells:
+            var price = {!! $Coins->getCoinDetail("Bitcoin")->getPrice(); !!};
+            cellName.innerHTML = coin;
+            cellPrice.innerHTML = price;
+            // cellChange.innerHTML = change;
+        }
+        else{
+            console.log(name);
+            alert("Unidentified Coin");
+        }
+        
+        
+
+           
+        
+    
+    }
 </script>
 
 @section('title', 'Profile')

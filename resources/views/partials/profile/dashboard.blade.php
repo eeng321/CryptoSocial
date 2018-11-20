@@ -167,9 +167,9 @@
               </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('wallets.store') }}">
+                {{-- <form method="POST" action="{{Form::open(array('action' => 'WalletController@store'))}}">
                 @csrf    
-                    <input type='hidden' name='user_id' value='{{ $myId }}'>
+                    <input type='hidden' name='user_id' value="{{Auth::user()->id}}">
                 
                     <div class="form-group">
                         <label for="coin">Coin: <span class="require">*</span></label>
@@ -185,7 +185,7 @@
                         <button type="submit" class="btn btn-theme">Add</button>
                     </div>
         
-                </form>
+                </form> --}}
             </div>
             
           </div>

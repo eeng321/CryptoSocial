@@ -37,19 +37,23 @@ Route::group(['middleware' => ['user_set']], function () {
     Route::get('edit', 'UsersController@edit');
     Route::post('edit', 'UsersController@update');
 
+    
+
     Route::resource('users', 'UsersController')->only([
         'index', 'show', 'myWatchlist', 'dashboard', 'myTrades', 'chat'
         ]);
-    
-    Route::resources([
-        'users' => 'UsersController',
-        'posts' => 'PostController',
-        'replies' => 'ReplyController',
-        'wallets' => 'WalletController',
-    ]);
-
    
 });
+
+Route::post('storeWallet', 'WalletController@store');
+
+Route::resources([
+    'users' => 'UsersController',
+    'posts' => 'PostController',
+    'replies' => 'ReplyController',
+    'wallets' => 'WalletController',
+]);
+
 
 Auth::routes();
 
