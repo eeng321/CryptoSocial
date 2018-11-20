@@ -11,7 +11,7 @@
                       
                   
         
-                    <input type='hidden' name='author_id' value='{{ $myId }}'>
+                    <input type='hidden' name='author_id' value='{{ Auth::user()->id }}'>
              
                     <div class="form-group">
                         <label for="title">Title<span class="require">*</span></label>

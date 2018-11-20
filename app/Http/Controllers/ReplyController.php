@@ -8,10 +8,14 @@ use App\Reply;
 class ReplyController extends Controller
 {
 
-    public static function getReplies($id){
-       // $replyList = null;
-        $replies = \DB::table('replies')->where('post_id', $id)->oldest()->paginate(100);
+    public static function getReplyCount($id){
+        $replies = \DB::table('replies')->where('post_id', $id)->count();
         return $replies;
+    }
+
+    public function destroy($id){
+      \DB::table('replies')->where('id', $id)->delete();
+      return redirect()->back();
     }
 
     public function store(Request $request)
@@ -27,8 +31,9 @@ class ReplyController extends Controller
         'content'=> $request->get('content')
       ]);
       $reply->save();
-      return redirect('/trades')->with('success', 'Reply has been added');
+      $path = "/posts?postId=" . $request->get('post_id');
+      return redirect($path)->with('success', 'Reply has been added');
     }
-    
+
 
 }

@@ -29,8 +29,13 @@
                           Community
                         </a>
                         <div class="dropdown-menu" aria-labelledby="commDropdown">
+<<<<<<< HEAD
                             <a class="dropdown-item" href="/trades">Trades</a>
                             <a class="dropdown-item" href="/users">Users</a>
+=======
+                            <a class="dropdown-item" href="posts">Posts</a>
+                            <a class="dropdown-item" href="users">Users</a>
+>>>>>>> 23a5d38f8d2b2c3b6d4c014785574a1dde572d0b
                         </div>
                     </li>
                     {{-- Vu change this Login anchor to whatever you need--}}
