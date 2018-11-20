@@ -2,11 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+  public function index(Request $req) 
+    {
+        //check query
+        $userList = null;
+        $data['post'] = null;
+        if(!empty($_GET['postId'])) {
+            $id = $_GET['postId'];
+            $post = \DB::table('posts')->where('id', $id)->first();
+            $replies = \DB::table('replies')->where('post_id', $id)->oldest()->paginate(5);
+            $data['post'] = $post;
+            return view('trades', ['post' => $post, 'posts' => $replies]);
+        } else{
+          $posts = \DB::table('posts')->latest()->paginate(5);
+          return view('trades', ['post' => null, 'posts' => $posts]);
+        }
+        
+    }
 
 
     public function store(Request $request)

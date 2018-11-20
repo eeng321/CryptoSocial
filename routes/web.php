@@ -21,17 +21,6 @@ Route::get('/', function () {
     return view('home', ['userCount' => $userCount]);
 });
 
-Route::get('trades', function() {
-    $myId = null;
-    if (!Auth::guest())
-        $myId = DB::table('users')->where('id', Auth::user()->id )->value('id');
-    $posts = DB::table('posts')->latest()->paginate(15);;
-    return view('trades', ['myId' => $myId, 'posts' => $posts]);
-});
-
-
-
-
 
 //testing sharing user_data across views
 // gets current auth()->user() shares for each view in $userData 
@@ -44,9 +33,12 @@ Route::group(['middleware' => ['user_set']], function() {
     Route::resource('users', 'UsersController')->only([
     'index', 'show'
     ]);
+
 });
 
-
+Route::resource('trades', 'PostController')->only([
+    'index'
+    ]);
 
 //array to register many resource controllers when we add more in the future
 Route::resources([

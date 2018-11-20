@@ -27,7 +27,7 @@
                     <a href={{url('users/'.$user->id)}} class='list-group-item d-flex list-group-item-action justify-content-between align-items-center'>
                         {{$user->name}}
                         <p>
-                        @if (!Auth::guest())
+                        @if (!Auth::guest() && Auth::user()->id != $user->id)
                             @if(FollowController::following(Auth::user()->id, $user->id))
                                 <span class='badge badge-success badge-pill'>following</span>
                             @else
