@@ -1,8 +1,5 @@
 <?php use App\Http\Controllers\UsersController; ?>
 <?php use App\Http\Controllers\ReplyController; ?>
-
-    {{-- Filler. Implement a For loop to dynamically add updates--}}
-
    
         <div class="my-3 p-3 bg-white rounded shadow-sm">
             @if (!$post)

@@ -21,7 +21,7 @@ class PostController extends Controller
             return view('trades', ['post' => $post, 'posts' => $replies]);
         } else{
           $posts = \DB::table('posts')->latest()->paginate(5);
-          return view('trades', ['post' => null, 'posts' => $posts]);
+          return view('posts', ['post' => null, 'posts' => $posts]);
         }
         
     }

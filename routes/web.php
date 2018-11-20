@@ -36,7 +36,7 @@ Route::group(['middleware' => ['user_set']], function() {
 
 });
 
-Route::resource('trades', 'PostController')->only([
+Route::resource('posts', 'PostController')->only([
     'index'
     ]);
 
