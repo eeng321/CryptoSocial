@@ -25,7 +25,11 @@ class PostController extends Controller
         
     }
 
-
+    public function destroy($id){
+      \DB::table('replies')->where('post_id', $id)->delete();
+      \DB::table('posts')->where('id', $id)->delete();
+      return redirect('/posts');
+    }
     public function store(Request $request)
     {
         $request->validate([

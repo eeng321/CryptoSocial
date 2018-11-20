@@ -11,14 +11,15 @@
                     $avatar = 'storage/avatars/' . UsersController::getAvatar($post->author_id);
                 @endphp
                 <img src='{{ $avatar }}' alt="" class="mr-2 rounded" width="60" height="60">
-                <p class="media-body mb-0  lh-125 border-bottom border-gray">
+                <span class="media-body mb-0 lh-125 border-bottom border-gray " >
                     <strong class="d-block text-gray-dark">{{$post->title}}</strong>
                     <strong class="d-block text-gray-dark">{{ UsersController::getName($post->author_id) }} @ {{$post->created_at}}</strong>
-                    {{$post->content}}
+                    <br>
+                    {!! nl2br(e($post->content)) !!}
                     <a class="d-block text-right mt-3" href="/posts?postId={{$post->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                             Comments ({{ ReplyController::getReplyCount($post->id) }})</a>
                     <br>
-                </p>
+                    </span>
             </div>
             @endforeach
         {{$posts->links()}}

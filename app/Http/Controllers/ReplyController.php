@@ -13,6 +13,11 @@ class ReplyController extends Controller
         return $replies;
     }
 
+    public function destroy($id){
+      \DB::table('replies')->where('id', $id)->delete();
+      return redirect()->back();
+    }
+
     public function store(Request $request)
     {
       $request->validate([

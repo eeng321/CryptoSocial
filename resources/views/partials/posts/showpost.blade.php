@@ -12,7 +12,7 @@
         </div>
     </div>
         <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-            {{$post->content}}
+        {!! nl2br(e($post->content)) !!}
             <br>
         </p>
 </div>
@@ -29,7 +29,15 @@
                 <img src='{{$avatar}}'alt="" class="mr-2 rounded" width="60" height="60">
                 <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
                     <strong class="d-block text-gray-dark">{{ UsersController::getName($reply->user_id) }} - {{$reply->created_at}}</strong>
-                    {{$reply->content}}
+                    <br>
+                    {!! nl2br(e($reply->content)) !!}
+                    @if (Auth::user()->id == $reply->user_id) 
+                        <form action="{{ route('replies.destroy', $reply->id) }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                        <button class="btn btn-link btn-sm">Delete Comment</button>
+                    @endif
+                </form>
                 </p>
                 <br>
             </div>
