@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\UsersController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,8 +9,7 @@ use App\Http\Controllers\UsersController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
+ */
 
 // first arg: The "URL Path" that the client is accessing
 // second arg: What executes accordingly
@@ -23,18 +20,16 @@ Route::get('/', function () {
 
 //testing sharing user_data across views
 // gets current auth()->user() shares for each view in $userData
-Route::group(['middleware' => ['user_set']], function() {
+Route::group(['middleware' => ['user_set']], function () {
     //routes that use ^ middleware defined in \App\Http\Kernel.php
     //user route
     Route::get('edit', 'UsersController@edit');
     Route::post('edit', 'UsersController@update');
 
     Route::resource('users', 'UsersController')->only([
-    'index', 'show'
+        'index', 'show',
     ]);
 });
-
-
 
 //array to register many resource controllers when we add more in the future
 Route::resources([
@@ -42,7 +37,6 @@ Route::resources([
     'posts' => 'PostController',
     'replies' => 'ReplyController',
 ]);
-
 
 // Route::resource('users', 'UserController')->except([
 //     'create', 'store', 'update', 'destroy'
@@ -55,8 +49,3 @@ Route::check(); */
 Auth::routes();
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-
-
-
-

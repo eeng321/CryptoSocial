@@ -15,8 +15,8 @@
     </div>
 
     @if (!Auth::guest())
-    @include('partials.trades.createpost')
+    @include('partials.posts.createpost')
     @endif
-    @include('partials.trades.tradeposts')
+    @include('partials.posts.tradeposts')
     @endsection()
 @section('footer')

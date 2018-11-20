@@ -17,7 +17,7 @@ class PostController extends Controller
         }
 
         $posts = DB::table('posts')->latest()->paginate(15);
-        return view('trades', ['myId' => $myId, 'posts' => $posts]);
+        return view('posts', ['myId' => $myId, 'posts' => $posts]);
     }
 
     public function store(Request $request)
