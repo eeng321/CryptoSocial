@@ -45,6 +45,7 @@ Route::group(['middleware' => ['user_set']], function () {
         'users' => 'UsersController',
         'posts' => 'PostController',
         'replies' => 'ReplyController',
+        'wallets' => 'WalletController',
     ]);
 
    

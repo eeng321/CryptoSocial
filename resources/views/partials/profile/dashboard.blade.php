@@ -167,19 +167,27 @@
               </button>
             </div>
             <div class="modal-body">
-                <form id="formAddName">
-                    <fieldset>
-                        <div class="form-inline">
-                            <label for="coinName">Name: </label>
-                            <input type="text" id="coinName" name="Name" />
-                        </div>
-                    </fieldset>
+                <form method="POST" action="{{ route('wallets.store') }}">
+                @csrf    
+                    <input type='hidden' name='user_id' value='{{ $myId }}'>
+                
+                    <div class="form-group">
+                        <label for="coin">Coin: <span class="require">*</span></label>
+                        <input type="text" class="form-control" name="coin" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount: <span class="require">*</span></label>
+                        <input type="text" class="form-control" name="amount" />
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-theme">Add</button>
+                    </div>
+        
                 </form>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" onclick="addPortfolioItem();" class="btn btn-theme">Add</button>
-            </div>
+            
           </div>
         </div>
       </div>

@@ -21,17 +21,6 @@
         }
     }
 
-    function addPortfolioItem(name){
-        var list = document.getElementById('portfolio');
-        var entry = document.getElementById('formPortfolio');
-        if(name != ""){
-            var coin = document.getElementById('coinName').value;
-            var entry = document.createElement('li');
-            entry.className = "form-inline"
-            entry.appendChild(document.createTextNode(coin));
-            list.appendChild(entry);
-        }
-    }
 </script>
 
 @section('title', 'Profile')
