@@ -36,6 +36,7 @@ Route::resources([
     'users' => 'UsersController',
     'posts' => 'PostController',
     'replies' => 'ReplyController',
+    'trades' => 'TradesController'
 ]);
 
 // Route::resource('users', 'UserController')->except([
