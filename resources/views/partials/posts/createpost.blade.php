@@ -5,16 +5,22 @@
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2 pt-4 collapse hide" id= "collapsePost">
-                <form action="">
-                            
+                
+                <form method="POST" action="{{ route('posts.store') }}">
+                @csrf
+                      
+                  
+        
+                    <input type='hidden' name='author_id' value='{{ $myId }}'>
+             
                     <div class="form-group">
-                        <label for="title">Title <span class="require">*</span></label>
+                        <label for="title">Title<span class="require">*</span></label>
                         <input type="text" class="form-control" name="title" />
                     </div>
                     
                     <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea rows="5" class="form-control" name="description" ></textarea>
+                        <label for="description">Description<span class="require">*</span></label>
+                        <textarea rows="5" class="form-control" name="content" ></textarea>
                     </div>
                     
                     <div class="form-group">

@@ -28,7 +28,7 @@
                           Community
                         </a>
                         <div class="dropdown-menu" aria-labelledby="commDropdown">
-                            <a class="dropdown-item" href="trades">Trades</a>
+                            <a class="dropdown-item" href="posts">Posts</a>
                             <a class="dropdown-item" href="users">Users</a>
                         </div>
                     </li>
@@ -46,6 +46,7 @@
                         <div class="dropdown-menu" aria-labelledby="userDropdown">
                             <!-- For you Edmond -->
                             <a class="dropdown-item" href="{{ '/users/'.Auth::user()->id }}">Profile</a>
+                            <a class="dropdown-item" href="{{ url('/edit') }}">Edit</a>
                             <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
                         </div>
                     </li>

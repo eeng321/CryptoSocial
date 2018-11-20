@@ -44,7 +44,7 @@ class UserRepository implements RepositoryInterface
     public function update(array $userinfo, $id)
     {
         $user = $this->model::find($id);
-        return $user::update($userinfo);
+        return $user->update($userinfo);
     }
 
     public function delete($id)
