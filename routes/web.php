@@ -46,7 +46,8 @@ Route::group(['middleware' => ['user_set']], function() {
     ]);
 });
 
-
+Route::post('follow', 'FollowerController@follow_unfollow');
+Route::get('followtest','FollowerController@test_follow');
 
 //array to register many resource controllers when we add more in the future
 Route::resources([

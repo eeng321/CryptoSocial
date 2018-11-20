@@ -3,12 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         {{-- Title Section --}}
         <title>Yeetly - @yield('title')</title>
 
         {{-- Stylesheets --}}
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-        <link href="{{"css/app.css"}}" rel="stylesheet" type="text/css">
+        <link href="{{"/css/app.css"}}" rel="stylesheet" type="text/css">
+        <script src="{{"/js/app.js"}}"></script>
     </head>
     <body>
         {{-- Navbar Section--}}
@@ -27,8 +29,8 @@
                           Community
                         </a>
                         <div class="dropdown-menu" aria-labelledby="commDropdown">
-                            <a class="dropdown-item" href="trades">Trades</a>
-                            <a class="dropdown-item" href="users">Users</a>
+                            <a class="dropdown-item" href="/trades">Trades</a>
+                            <a class="dropdown-item" href="/users">Users</a>
                         </div>
                     </li>
                     {{-- Vu change this Login anchor to whatever you need--}}
@@ -79,6 +81,4 @@
     </body>
     @include('auth/login')
     @include('auth/register')
-
-    <script src="{{"js/app.js"}}"></script>
 </html>
