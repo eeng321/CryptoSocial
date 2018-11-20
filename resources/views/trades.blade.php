@@ -17,6 +17,6 @@
     @if (!Auth::guest())
     @include('partials.trades.createtrade')
     @endif
-    @include('partials.trades.trades')
+    @include('partials.trades.tradeslist')
     @endsection()
 @section('footer')

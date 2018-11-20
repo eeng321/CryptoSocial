@@ -9,18 +9,26 @@
                 <form method="POST" action="{{ route('trades.store') }}">
                 @csrf
 
-
-
-                    <input type='hidden' name='author_id' value='{{ $myId }}'>
+                    <input type='hidden' name='user_id' value='{{ $myId }}'>
 
                     <div class="form-group">
-                        <label for="title">Title<span class="require">*</span></label>
-                        <input type="text" class="form-control" name="title" />
+                        <label for="coin">Coin<span class="require">*</span></label>
+                        <input type="text" class="form-control" name="coin" />
                     </div>
 
                     <div class="form-group">
-                        <label for="description">Description<span class="require">*</span></label>
-                        <textarea rows="5" class="form-control" name="content" ></textarea>
+                        <label for="buy_price">Buy price<span class="require">*</span></label>
+                        <input type="number" class="form-control" name="buy_price" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sell_price">Sell price<span class="require">*</span></label>
+                        <input type="number" class="form-control" name="sell_price" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="trade_time">Trade time<span class="require">*</span></label>
+                        <input type="datetime-local" class="timepicker form-control" name="trade_time">
                     </div>
 
                     <div class="form-group">
@@ -29,7 +37,7 @@
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">
-                            Create
+                            Add
                         </button>
 
                         <button class="btn btn-default">
