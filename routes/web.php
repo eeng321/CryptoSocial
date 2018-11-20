@@ -47,6 +47,16 @@ Route::group(['middleware' => ['user_set']], function () {
 
 Route::post('storeWallet', 'WalletController@store');
 
+Route::resource('posts', 'PostController')->only([
+    'index' ,'destroy'
+    ]);
+Route::resource('posts', 'ReplyController')->only([
+    'destroy'
+]);
+
+
+
+//array to register many resource controllers when we add more in the future
 Route::resources([
     'users' => 'UsersController',
     'posts' => 'PostController',

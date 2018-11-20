@@ -94,7 +94,6 @@ class UsersController extends Controller
             $req->validate([
                 'pic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
-            $req->file('pic')->store('avatars');
             $pathName = $req_info['id'].'_avatar'.'.'.$req->file('pic')->getClientOriginalExtension();
             $req->file('pic')->storeAs('avatars',$pathName);
             $update_data = [

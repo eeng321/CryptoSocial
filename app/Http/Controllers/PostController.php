@@ -4,22 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
-    public function index(Request $req)
+   
+  public function index(Request $req) 
     {
-        $myId = null;
-        if (!Auth::guest()) {
-            $myId = DB::table('users')->where('id', Auth::user()->id)->value('id');
+        $userList = null;
+        $data['post'] = null;
+        if(!empty($_GET['postId'])) {
+            $id = $_GET['postId'];
+            $post = \DB::table('posts')->where('id', $id)->first();
+            $replies = \DB::table('replies')->where('post_id', $id)->oldest()->paginate(5);
+            $data['post'] = $post;
+            return view('posts', ['post' => $post, 'posts' => $replies]);
+        } else{
+          $posts = \DB::table('posts')->latest()->paginate(5);
+          return view('posts', ['post' => null, 'posts' => $posts]);
         }
-
-        $posts = DB::table('posts')->latest()->paginate(15);
-        return view('posts', ['myId' => $myId, 'posts' => $posts]);
+        
     }
 
+    public function destroy($id){
+      \DB::table('replies')->where('post_id', $id)->delete();
+      \DB::table('posts')->where('id', $id)->delete();
+      return redirect('/posts');
+    }
     public function store(Request $request)
     {
         $request->validate([
