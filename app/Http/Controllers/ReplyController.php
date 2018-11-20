@@ -27,8 +27,8 @@ class ReplyController extends Controller
         'content'=> $request->get('content')
       ]);
       $reply->save();
-      return redirect('/trades')->with('success', 'Reply has been added');
+      return redirect('/posts')->with('success', 'Reply has been added');
     }
-    
+
 
 }

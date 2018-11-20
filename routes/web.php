@@ -21,20 +21,8 @@ Route::get('/', function () {
     return view('home', ['userCount' => $userCount]);
 });
 
-Route::get('trades', function() {
-    $myId = null;
-    if (!Auth::guest())
-        $myId = DB::table('users')->where('id', Auth::user()->id )->value('id');
-    $posts = DB::table('posts')->latest()->paginate(15);;
-    return view('trades', ['myId' => $myId, 'posts' => $posts]);
-});
-
-
-
-
-
 //testing sharing user_data across views
-// gets current auth()->user() shares for each view in $userData 
+// gets current auth()->user() shares for each view in $userData
 Route::group(['middleware' => ['user_set']], function() {
     //routes that use ^ middleware defined in \App\Http\Kernel.php
     //user route
