@@ -31,11 +31,13 @@
                     <strong class="d-block text-gray-dark">{{ UsersController::getName($reply->user_id) }} - {{$reply->created_at}}</strong>
                     <br>
                     {!! nl2br(e($reply->content)) !!}
+                    @if (!Auth::guest())
                     @if (Auth::user()->id == $reply->user_id) 
                         <form action="{{ route('replies.destroy', $reply->id) }}" method="POST">
                             @method('DELETE')
                             @csrf
                         <button class="btn btn-link btn-sm">Delete Comment</button>
+                    @endif
                     @endif
                 </form>
                 </p>
