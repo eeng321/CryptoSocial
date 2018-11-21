@@ -27,6 +27,7 @@
                           Community
                         </a>
                         <div class="dropdown-menu" aria-labelledby="commDropdown">
+                            <a class="dropdown-item" href="trades">Trades</a>
                             <a class="dropdown-item" href="posts">Posts</a>
                             <a class="dropdown-item" href="users">Users</a>
                         </div>
@@ -81,4 +82,5 @@
     @include('auth/register')
 
     <script src="{{"js/app.js"}}"></script>
+    @yield('scripts');
 </html>
