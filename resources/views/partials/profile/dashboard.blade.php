@@ -10,7 +10,7 @@
         <div class="row mt content-panel">
             <div class="col-md-4 profile-text mt mb centered">
                 <div class="right-divider hidden-sm hidden-xs">
-                <h4>{{FollowerController::countFollowers($userProfile->id)}}</h4>
+                <h4 id="prof-follow-count">{{FollowerController::countFollowers($userProfile->id)}}</h4>
                 <h6>FOLLOWERS</h6>
                 <h4>{{FollowerController::countFollowing($userProfile->id)}}</h4>
                 <h6>FOLLOWING</h6>
@@ -247,8 +247,6 @@
         $(this).attr("disabled",true);
         var action = $(this).data("url");
         var btnContext = this;
-        // console.log(typeof(urlData));
-        // console.log(typeof("follow"));
         executeCallback( function() {
             btnCallback(uid,fid, action, btnContext);
         });
@@ -280,10 +278,14 @@
                         $(context).data("url",'unfollow');
                         $(context).html("<i></i>Unfollow");
                         $(context).find("i").attr("class", "fa fa-times-circle");
+                        var num = parseInt($("#prof-follow-count").text()) + 1 ;
+                        $("#prof-follow-count").text(num);
                     } else if (action === "unfollow") {
                         $(context).data("url",'follow');
                         $(context).html("<i></i>Follow");
                         $(context).find("i").attr("class", "fa fa-check");
+                        var num = parseInt($("#prof-follow-count").text()) - 1 ;
+                        $("#prof-follow-count").text(num);
                     }
                 }
                 $(context).attr("disabled",false);
