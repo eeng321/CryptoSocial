@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('title', 'Temp Prof')
 
 @section('navbar')
@@ -12,6 +13,12 @@
 @endif 
 
 
+
+@endsection()
+
+@section('footer')
+
+@section('scripts')
 <script>
     var uid = JSON.parse("{{ json_encode(Auth::user()->id)}}");
     var fid = JSON.parse("{{ json_encode($userProfile['id']) }}");
@@ -64,7 +71,5 @@
         });
     }
  </script>
-@endsection()
-
-@section('footer')
+ @endsection()
 

@@ -10,7 +10,6 @@
         {{-- Stylesheets --}}
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
         <link href="{{"/css/app.css"}}" rel="stylesheet" type="text/css">
-        <script src="{{"/js/app.js"}}"></script>
     </head>
     <body>
         {{-- Navbar Section--}}
@@ -83,6 +82,6 @@
     @include('auth/login')
     @include('auth/register')
 
-    <script src="{{"js/app.js"}}"></script>
+    <script src="{{URL::to("js/app.js")}}"></script>
     @yield('scripts');
 </html>
