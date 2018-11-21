@@ -30,6 +30,7 @@
                         <div class="dropdown-menu" aria-labelledby="commDropdown">
                             <a class="dropdown-item" href="/posts">Posts</a>
                             <a class="dropdown-item" href="/users">Users</a>
+                            <a class="dropdown-item" href="/trades">Trades</a>
                         </div>
                     </li>
                     {{-- Vu change this Login anchor to whatever you need--}}
@@ -87,4 +88,5 @@
             $('#loginModal').modal('show');
         </script>
     @endif
+    @yield('scripts');
 </html>

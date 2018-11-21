@@ -60,7 +60,12 @@ Route::resources([
     'users' => 'UsersController',
     'posts' => 'PostController',
     'replies' => 'ReplyController',
+
     'wallets' => 'WalletController',
+
+    'trades' => 'TradesController',
+    'tradereplies' => 'TradeReplyController'
+
 ]);
 
 
