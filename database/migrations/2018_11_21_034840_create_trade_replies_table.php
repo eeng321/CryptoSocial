@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFollowersTable extends Migration
+class CreateTradeRepliesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateFollowersTable extends Migration
      */
     public function up()
     {
-        Schema::create('followers', function (Blueprint $table) {
+        Schema::create('trade_replies', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('trade_id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('user_following_id');
+            $table->foreign('trade_id')->references('id')->on('trades');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('user_following_id')->references('id')->on('users');
+            $table->mediumText('content');
             $table->timestamps();
         });
     }
@@ -30,7 +32,7 @@ class CreateFollowersTable extends Migration
     public function down()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        Schema::dropIfExists('followers');
+        Schema::dropIfExists('trade_replies');
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

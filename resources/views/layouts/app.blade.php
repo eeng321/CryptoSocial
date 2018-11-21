@@ -29,8 +29,9 @@
                           Community
                         </a>
                         <div class="dropdown-menu" aria-labelledby="commDropdown">
-                            <a class="dropdown-item" href="/trades">Trades</a>
-                            <a class="dropdown-item" href="/users">Users</a>
+                            <a class="dropdown-item" href="trades">Trades</a>
+                            <a class="dropdown-item" href="posts">Posts</a>
+                            <a class="dropdown-item" href="users">Users</a>
                         </div>
                     </li>
                     {{-- Vu change this Login anchor to whatever you need--}}
@@ -81,4 +82,7 @@
     </body>
     @include('auth/login')
     @include('auth/register')
+
+    <script src="{{"js/app.js"}}"></script>
+    @yield('scripts');
 </html>
