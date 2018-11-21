@@ -29,7 +29,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="commDropdown">
                             <a class="dropdown-item" href="posts">Posts</a>
-                            <a class="dropdown-item" href="users">Users</a>
+                            <a class="dropdown-item" href="/users">Users</a>
                         </div>
                     </li>
                     {{-- Vu change this Login anchor to whatever you need--}}

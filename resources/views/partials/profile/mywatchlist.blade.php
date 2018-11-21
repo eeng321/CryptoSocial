@@ -2,8 +2,10 @@
 <div class="wrapper">
     <section id="content">
         <div class="border-head">
-            <h3>My Watchlist</h3>
+            <h3>Watchlist</h3>
         </div>
+        <!-- show only if user is owner of profile -->
+        @if(!Auth::guest() && Auth::user()->id == basename(Request::segment(2)) ) 
         <!-- Search form -->
         <div class="form-inline">
             <form class="watchlistForm">
@@ -11,7 +13,7 @@
                 <button type="button" class="btn btn-theme" onclick="addWatchlistItem(document.getElementById('watchlistSearch').value)">Add</button>
             </form>
         </div>
-        
+        @endif
         <table id="watchlistTable" class="table table-dark">
             <thead>
             <tr>

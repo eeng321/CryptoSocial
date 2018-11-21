@@ -8,13 +8,10 @@
     //change page content
     function load_main_content(content)
     {
-        if(Auth::guest()){
-            $('#replace').load('/users/'+$user->id+content);
+ 
+        var guest = {{ collect(request()->segments())->last() }}
+        $('#replace').load(guest + content);
 
-        }
-        else{
-            
-        }
     }
 
     //display change of coin in red or green
@@ -54,12 +51,7 @@
             console.log(name);
             alert("Unidentified Coin");
         }
-        
-        
 
-           
-        
-    
     }
 </script>
 
@@ -106,12 +98,15 @@
 @endsection
 
 @section('content')
-    <body onload="load_main_content('/dashboard');">
+
+
+    <body onload="load_main_content('/dashboard');"> 
         <div id="replace">
-            
+        
         <!-- /replace content -->
         </div>
     </body>
+
 @endsection
 
 @section('footer')

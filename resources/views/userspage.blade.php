@@ -24,7 +24,7 @@
                 <ul class="list-group">
 
                 @foreach($users as $user) 
-                    <a href={{url('users/'.$user->id)}} class='list-group-item d-flex list-group-item-action justify-content-between align-items-center'>
+                    <a href={{url('/users/'.$user->id)}} class='list-group-item d-flex list-group-item-action justify-content-between align-items-center'>
                         {{$user->name}}
                         <p>
                         @if (!Auth::guest() && Auth::user()->id != $user->id)

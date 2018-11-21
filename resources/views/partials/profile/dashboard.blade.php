@@ -1,10 +1,43 @@
 <div class="wrapper">
     <!-- Main Content -->
     <section id="content">
-
+      <!-- Show panel only if logged in and not the owner of profile -->
+    @if(!Auth::guest() && Auth::user()->id != basename(Request::segment(2)) ) 
+        <!-- USER PANEL -->
+        <div class="row mt content-panel">
+            <div class="col-md-4 profile-text mt mb centered">
+                <div class="right-divider hidden-sm hidden-xs">
+                <h4>1922</h4>
+                <h6>FOLLOWERS</h6>
+                <h4>290</h4>
+                <h6>FOLLOWING</h6>
+                <h4>$ 13,980</h4>
+                <h6>MONTHLY EARNINGS</h6>
+                </div>
+            </div>
+            <!-- /col-md-4 -->
+            <div class="col-md-4 profile-text">
+                <h3>Squirtle</h3>
+                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
+                <br>
+                <p><button class="btn btn-theme"><i class="fa fa-envelope"></i> Send Message</button></p>
+            </div>
+            <!-- /col-md-4 -->
+            <div class="col-md-4 centered">
+                <div class="profile-pic">
+                <p><img src="{{URL::to('img/squirtle.png')}}" class="img-circle" width="150"></p>
+                <p>
+                    <button class="btn btn-theme"><i class="fa fa-check"></i> Follow</button>
+                    <button class="btn btn-theme02">Add</button>
+                </p>
+                </div>
+            </div>
+        <!-- /col-md-4 -->
+        </div>
+    @endif
         <!--CUSTOM CHART START -->
         <div class="border-head">
-            <h3>DAILY GAINS</h3>
+            <h3>MONTHLY GAINS</h3>
         </div>
         <div class="custom-bar-chart">
             <ul class="y-axis">
@@ -16,31 +49,31 @@
                 <li><span>0</span></li>
             </ul>
             <div class="bar">
-                <div class="title">MON</div>
+                <div class="title">MAY</div>
                 <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top" style="height: 85%;">8500</div>
             </div>
             <div class="bar ">
-                <div class="title">TUES</div>
+                <div class="title">JUNE</div>
                 <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top" style="height: 50%;">5000</div>
             </div>
             <div class="bar ">
-                <div class="title">WED</div>
+                <div class="title">JULY</div>
                 <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top" style="height: 60%;">6000</div>
             </div>
             <div class="bar ">
-                <div class="title">THURS</div>
+                <div class="title">AUG</div>
                 <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top" style="height: 45%;">4500</div>
             </div>
             <div class="bar">
-                <div class="title">FRI</div>
+                <div class="title">SEPT</div>
                 <div class="value tooltips" data-original-title="3.200" data-toggle="tooltip" data-placement="top" style="height: 32%;">3200</div>
             </div>
             <div class="bar ">
-                <div class="title">SAT</div>
+                <div class="title">OCT</div>
                 <div class="value tooltips" data-original-title="6.200" data-toggle="tooltip" data-placement="top" style="height: 62%;">6200</div>
             </div>
             <div class="bar">
-                <div class="title">SUN</div>
+                <div class="title">NOV</div>
                 <div class="value tooltips" data-original-title="7.500" data-toggle="tooltip" data-placement="top" style="height: 75%;">7500</div>
             </div>
         </div>
@@ -87,7 +120,10 @@
                 <div class="grey-panel pn donut-chart">
                     <div class="grey-header">
                         <h4>PORTFOLIO</h4>
-                        <button class="btn btn-theme04 pull-right position mt-2" data-toggle="modal" data-target="#addCoin"> <i class="fa fa-star"></i> </button>
+                        <!--  Show the add to portfolio button only if profile belongs to user -->
+                        @if(!Auth::guest() && Auth::user()->id == basename(Request::segment(2)) ) 
+                            <button class="btn btn-theme04 pull-right position mt-2" data-toggle="modal" data-target="#addCoin"> <i class="fa fa-star"></i> </button>
+                        @endif
                     </div>
                     <!-- left side of panel -->
                     <div class="panel-left">
