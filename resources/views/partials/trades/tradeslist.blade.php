@@ -22,7 +22,7 @@
                     Time: {{ $trade->trade_time }}
                     <br>
                     <a class="d-block text-right mt-3" data-toggle="collapse" href="#collapse{{ $trade->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        Comments</a>
+                        Comments ({{ TradeReplyController::getReplyCount($trade->id) }})</a>
                 </p>
             </div>
              <div id="collapse{{ $trade->id}}" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">

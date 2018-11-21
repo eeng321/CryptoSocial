@@ -13,6 +13,10 @@ class TradeReplyController extends Controller
         $replies = \DB::table('trade_replies')->where('trade_id', $id)->oldest()->paginate(100);
         return $replies;
     }
+    public static function getReplyCount($id){
+      $replies = \DB::table('trade_replies')->where('trade_id', $id)->count();
+      return $replies;
+  }
 
     public function store(Request $request)
     {
