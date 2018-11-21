@@ -34,9 +34,9 @@
                 @endphp   
                 <p><img src="{{$avatar}}" class="img-circle" width="150"></p>
                 <p>
-                    {{-- <button id="followBtn" type="button" data-url={{$isFollowing ? 'unfollow' : 'follow'}}><i class="fa fa-check"></i>{{ $isFollowing ? 'Unfollow' : 'Follow'}} </button> --}}
+                    <button class="btn btn-theme" id="followBtn" type="button" data-url={{$isFollowing ? 'unfollow' : 'follow'}}><i class="fa {{$isFollowing ? "fa-times-circle" : "fa-check"}}"></i>{{ $isFollowing ? 'Unfollow' : 'Follow'}} </button>
 
-                    <button class="btn btn-theme"><i class="fa fa-check"></i> Follow</button>
+                    {{-- <button class="btn btn-theme"><i class="fa fa-check"></i> Follow</button> --}}
                     {{-- <button class="btn btn-theme02">Add</button> --}}
                 </p>
                 </div>
@@ -236,3 +236,58 @@
           </div>
         </div>
       </div>
+
+    <script>
+            var uid = JSON.parse("{{ json_encode(Auth::user()->id)}}");
+    var fid = JSON.parse("{{ json_encode($userProfile['id']) }}");
+    function executeCallback(callback) {
+        callback();
+    }
+    $("#followBtn").click(function(e) {
+        $(this).attr("disabled",true);
+        var action = $(this).data("url");
+        var btnContext = this;
+        // console.log(typeof(urlData));
+        // console.log(typeof("follow"));
+        executeCallback( function() {
+            btnCallback(uid,fid, action, btnContext);
+        });
+    });
+
+    function btnCallback(uid,fid, action, context) {
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: "POST",
+            url : "/follow",
+            data: {
+                user_id: uid,
+                user_following_id: fid,
+                action: action,
+            },
+            error: function(result,status,errorMsg) {
+                console.log(status+" Message: "+errorMsg);
+                if($(".text-danger").length) {
+                    $(".text-danger").text("Unable to follow user!!");
+                } else {
+                    $(`<div class="text-danger"> ${"Unable to follow user"}</div>`).insertAfter(context);
+                }
+            },
+            complete: function(data, status) {
+                if(data.status === 200) {
+                    if(action === "follow") {
+                        $(context).data("url",'unfollow');
+                        $(context).html("<i></i>Unfollow");
+                        $(context).find("i").attr("class", "fa fa-times-circle");
+                    } else if (action === "unfollow") {
+                        $(context).data("url",'follow');
+                        $(context).html("<i></i>Follow");
+                        $(context).find("i").attr("class", "fa fa-check");
+                    }
+                }
+                $(context).attr("disabled",false);
+            }
+        });
+    }
+    </script>

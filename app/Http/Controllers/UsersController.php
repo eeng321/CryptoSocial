@@ -59,6 +59,10 @@ class UsersController extends Controller
         $displayedUser = $this->userrequest->getbyid($id);
       //  dd($displayedUser);
         $data['userProfile'] = $displayedUser;
+        $matchThese = ['user_id' => Auth::User()->id, 'user_following_id' => $id];
+        $count = \DB::table('followers')->where($matchThese)->count();
+        $isFollow = $count > 0;
+        $data['isFollowing'] = $isFollow;
         return view('partials/profile/dashboard',$data);
     }
 
