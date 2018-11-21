@@ -3,7 +3,7 @@
    
         <div class="my-3 p-3 bg-white rounded shadow-sm">
             @if (!$post)
-            <h6 class="border-bottom border-gray pb-2 mb-0">Recent Posts</h6>
+            <h6 class="border-bottom border-gray pb-2 mb-0">Recent Discussion</h6>
             @endif
             @foreach($posts as $post) 
             <div class="media text-muted pt-3">

@@ -29,7 +29,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="commDropdown">
                             <a class="dropdown-item" href="trades">Trades</a>
-                            <a class="dropdown-item" href="posts">Posts</a>
+                            <a class="dropdown-item" href="posts">Discussion</a>
                             <a class="dropdown-item" href="users">Users</a>
                         </div>
                     </li>
