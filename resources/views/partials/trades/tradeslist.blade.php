@@ -18,7 +18,7 @@
                     Coin: {{ $trade->coin }}<br>
                     Bought at: ${{ $trade->buy_price }}<br>
                     Sold at: ${{ $trade->sell_price }}<br>
-                    Difference: ${{ $trade->buy_price - $trade->sell_price }}<br>
+                    Difference: {{ ($trade->buy_price - $trade->sell_price) >= 0 ? '$' . ($trade->buy_price - $trade->sell_price) : '–$' . abs(round($trade->buy_price - $trade->sell_price, 2)) }}<br>
                     Time: {{ $trade->trade_time }}
                     <br>
                     <a class="d-block text-right mt-3" data-toggle="collapse" href="#collapse{{ $trade->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">

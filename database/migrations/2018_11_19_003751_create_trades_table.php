@@ -17,8 +17,8 @@ class CreateTradesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->decimal('buy_price', 10, 4);
-            $table->decimal('sell_price', 10, 4);
+            $table->decimal('buy_price', 20, 2);
+            $table->decimal('sell_price', 20, 2);
             $table->timestamp('trade_time');
             $table->string('coin');
             $table->timestamps();
@@ -32,6 +32,8 @@ class CreateTradesTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('trades');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

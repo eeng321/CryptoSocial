@@ -1,4 +1,4 @@
-<?php use App\Http\Controllers\FollowController; ?>
+<?php use App\Http\Controllers\FollowerController; ?>
 @extends('layouts.app')
 
 @section('title', 'Users')
@@ -27,8 +27,8 @@
                     <a href={{url('/users/'.$user->id)}} class='list-group-item d-flex list-group-item-action justify-content-between align-items-center'>
                         {{$user->name}}
                         <p>
-                        @if (!Auth::guest() && Auth::user()->id != $user->id)
-                            @if(FollowController::following(Auth::user()->id, $user->id))
+                        @if (!Auth::guest())
+                            @if(FollowerController::following(Auth::user()->id, $user->id))
                                 <span class='badge badge-success badge-pill'>following</span>
                             @else
                                 <span class='badge badge-secondary badge-pill'>Not Following</span>
