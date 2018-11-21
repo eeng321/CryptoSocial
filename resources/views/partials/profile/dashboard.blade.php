@@ -12,7 +12,7 @@
                 <div class="right-divider hidden-sm hidden-xs">
                 <h4>{{FollowerController::countFollowers($userProfile->id)}}</h4>
                 <h6>FOLLOWERS</h6>
-                <h4>{{FollowerController::countFollowers($userProfile->id)}}</h4>
+                <h4>{{FollowerController::countFollowing($userProfile->id)}}</h4>
                 <h6>FOLLOWING</h6>
                 <h4>$ 13,980</h4>
                 <h6>MONTHLY EARNINGS</h6>
@@ -34,7 +34,7 @@
                 @endphp   
                 <p><img src="{{$avatar}}" class="img-circle" width="150"></p>
                 <p>
-                    <button class="btn btn-theme" id="followBtn" type="button" data-url={{$isFollowing ? 'unfollow' : 'follow'}}><i class="fa {{$isFollowing ? "fa-times-circle" : "fa-check"}}"></i>{{ $isFollowing ? 'Unfollow' : 'Follow'}} </button>
+                    <button class="btn btn-theme" id="followBtn" type="button" data-url={{$isFollowing ? 'unfollow' : 'follow'}}>&nbsp;<i class="fa {{$isFollowing ? "fa-times-circle" : "fa-check"}}">&nbsp;</i>{{ $isFollowing ? 'Unfollow' : 'Follow'}} </button>
 
                     {{-- <button class="btn btn-theme"><i class="fa fa-check"></i> Follow</button> --}}
                     {{-- <button class="btn btn-theme02">Add</button> --}}
