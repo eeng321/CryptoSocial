@@ -60,6 +60,7 @@
 
 
                 var coinUrl = "https://api.coinmarketcap.com/v2/ticker/" + coinID +"/";
+                console.log(coinUrl);
                 Http.open("GET", coinUrl);
                 Http.send();
                 Http.onreadystatechange= function(){
@@ -70,7 +71,8 @@
 
                         coin.price = json.data.quotes.USD.price;
                         coin.changeIn24 = json.data.quotes.USD.percent_change_24h;
-                    
+                        console.log(coin.price);
+                        console.log(coin.changeIn24);
                         return coin;
                     }
                 }
@@ -100,8 +102,8 @@
             var coinInfo = getCoinInfo(name);
 
             cellName.innerHTML = name;
-            cellPrice.innerHTML = coinInfo.price; //price
-            cellChange.innerHTML = coinInfo.changeIn24; //change
+            cellPrice.innerHTML = String(coinInfo.price); //price
+            cellChange.innerHTML = String(coinInfo.changeIn24); //change
         }
         else{
             console.log(name);
@@ -131,13 +133,13 @@
                     @endphp
                 @else
                     @php
-                        $avatarSide = "img/homam.png" ;
+                        $avatarSide = "/img/homam.png" ;
                         $dpName = "GUEST";
                         $profile = '/'
                     @endphp 
                 @endif
 
-                <p class="centered"><a href="/users/{{Auth::user()->id}}"><img src="{{ $avatarSide }}" class="img-circle" width="80"></a></p>
+                <p class="centered"><a href={{$profile}}><img src="{{ $avatarSide }}" class="img-circle" width="80"></a></p>
                     <h5 class="centered">{{$dpName}}</h5>
                 <li>
                     <a class="dcjq-parent" href="javascript:;" onclick="load_main_content('/dashboard')">
