@@ -31,6 +31,8 @@ class CreateTradeRepliesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('replies');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::dropIfExists('trade_replies');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
