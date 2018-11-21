@@ -29,7 +29,17 @@ Route::group(['middleware' => ['user_set']], function () {
     Route::resource('users', 'UsersController')->only([
         'index', 'show',
     ]);
+
 });
+
+Route::resource('posts', 'PostController')->only([
+    'index' ,'destroy'
+    ]);
+Route::resource('posts', 'ReplyController')->only([
+    'destroy'
+]);
+
+
 
 //array to register many resource controllers when we add more in the future
 Route::resources([
