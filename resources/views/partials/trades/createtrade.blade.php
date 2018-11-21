@@ -18,12 +18,12 @@
 
                     <div class="form-group">
                         <label for="buy_price">Buy price<span class="require">*</span></label>
-                        <input type="number" class="form-control" name="buy_price" />
+                        <input type="number" step="0.01" class="form-control" name="buy_price" />
                     </div>
 
                     <div class="form-group">
                         <label for="sell_price">Sell price<span class="require">*</span></label>
-                        <input type="number" class="form-control" name="sell_price" />
+                        <input type="number" step="0.01" class="form-control" name="sell_price" />
                     </div>
 
                     <div class="form-group">
