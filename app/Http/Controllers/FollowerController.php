@@ -75,4 +75,15 @@ class FollowerController extends Controller
             return false;
         }
     }
+
+    public static function countFollowers($id){
+        $count = \DB::table('followers')->where(['user_following_id' => $id])->count();
+        return $count;
+    }
+
+    public static function countFollowing($id){
+        $count = \DB::table('followers')->where( ['user_id' => $id])->count();
+        return $count;
+    }
+
 }

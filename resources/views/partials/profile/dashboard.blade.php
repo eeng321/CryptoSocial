@@ -1,3 +1,6 @@
+<?php use App\Http\Controllers\UsersController; ?> 
+<?php use App\Http\Controllers\FollowerController; ?>
+
 <div class="wrapper">
     <!-- Main Content -->
     <section id="content">
@@ -7,9 +10,9 @@
         <div class="row mt content-panel">
             <div class="col-md-4 profile-text mt mb centered">
                 <div class="right-divider hidden-sm hidden-xs">
-                <h4>1922</h4>
+                <h4>{{FollowerController::countFollowers($userProfile->id)}}</h4>
                 <h6>FOLLOWERS</h6>
-                <h4>290</h4>
+                <h4>{{FollowerController::countFollowers($userProfile->id)}}</h4>
                 <h6>FOLLOWING</h6>
                 <h4>$ 13,980</h4>
                 <h6>MONTHLY EARNINGS</h6>
@@ -17,7 +20,7 @@
             </div>
             <!-- /col-md-4 -->
             <div class="col-md-4 profile-text">
-                <h3>Squirtle</h3>
+                <h3>{{$userProfile->name}}</h3>
                 <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
                 <br>
                 <p><button class="btn btn-theme"><i class="fa fa-envelope"></i> Send Message</button></p>
@@ -25,10 +28,16 @@
             <!-- /col-md-4 -->
             <div class="col-md-4 centered">
                 <div class="profile-pic">
-                <p><img src="{{URL::to('img/squirtle.png')}}" class="img-circle" width="150"></p>
+                <!-- grab profile owner's info -->
+                @php
+                    $avatar = '/storage/avatars/' . UsersController::getAvatar($userProfile->id);
+                @endphp   
+                <p><img src="{{$avatar}}" class="img-circle" width="150"></p>
                 <p>
+                    {{-- <button id="followBtn" type="button" data-url={{$isFollowing ? 'unfollow' : 'follow'}}><i class="fa fa-check"></i>{{ $isFollowing ? 'Unfollow' : 'Follow'}} </button> --}}
+
                     <button class="btn btn-theme"><i class="fa fa-check"></i> Follow</button>
-                    <button class="btn btn-theme02">Add</button>
+                    {{-- <button class="btn btn-theme02">Add</button> --}}
                 </p>
                 </div>
             </div>

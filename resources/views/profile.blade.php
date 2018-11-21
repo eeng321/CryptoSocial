@@ -1,9 +1,13 @@
 <!-- Inspired by Dashio template -->
-
+<?php use App\Http\Controllers\UsersController; ?>
 @extends('layouts.app')
+
+@section('scripts')
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- Include Charts -->
 <script type="text/javascript" src="{{ URL::to('js/chart.js') }}"></script>
 <!-- Replace contents -->
+
 <script type="text/javascript">
     //change page content
     function load_main_content(content)
@@ -24,7 +28,55 @@
         }
     }
     //use for watchlist page
+    //helper making api call to get coin
+    function getCoinInfo(name) {
+        var coin = {
+            price : "",
+            changeIn24 : ""
+        };
 
+        const Http = new XMLHttpRequest();
+        const url='https://api.coinmarketcap.com/v2/listings/';
+        Http.open("GET", url);
+        Http.send();
+        var jsonString = "";
+        Http.onreadystatechange= function(){
+            if(this.readyState==4 && this.status==200) {
+                var jsonString = JSON.parse(Http.response);
+                //console.log(jsonString);
+                //document.write(jsonString.data[0].name);
+
+
+                console.log(jsonString.data.length);
+
+
+                var coinID = "";
+                for(var i = 0; i < jsonString.data.length; i++) {
+                    if(jsonString.data[i].name === name) {
+                        coinID = jsonString.data[i].id;
+                        break;
+                    }
+                }
+
+
+                var coinUrl = "https://api.coinmarketcap.com/v2/ticker/" + coinID +"/";
+                Http.open("GET", coinUrl);
+                Http.send();
+                Http.onreadystatechange= function(){
+                    if(this.readyState==4 && this.status==200) {
+                        var json = JSON.parse(Http.response);
+                        console.log(json);
+
+
+                        coin.price = json.data.quotes.USD.price;
+                        coin.changeIn24 = json.data.quotes.USD.percent_change_24h;
+                    
+                        return coin;
+                    }
+                }
+            }
+        }
+    }
     function addWatchlistItem(){
         // <?php $results = $Coins->populateCoins() ?>
         // Find a <table> element with id="myTable":
@@ -44,16 +96,70 @@
             
         if(name != ""){
             // Add some text to the new cells:
-            var price = 10;
+            // var price = {!! $Coins->getCoinDetail("Bitcoin")->getPrice(); !!};
+            var coinInfo = getCoinInfo(name);
+
             cellName.innerHTML = name;
-            cellPrice.innerHTML = price;
-            // cellChange.innerHTML = change;
+            cellPrice.innerHTML = coinInfo.price; //price
+            cellChange.innerHTML = coinInfo.changeIn24; //change
         }
         else{
             console.log(name);
             alert("Unidentified Coin");
         }
 
+    }
+
+    // follow buttons
+    var uid = JSON.parse("{{ json_encode(Auth::user()->id)}}");
+    var fid = JSON.parse("{{ json_encode($userProfile['id']) }}");
+    function executeCallback(callback) {
+        callback();
+    }
+    $("#followBtn").click(function(e) {
+        $(this).attr("disabled",true);
+        var action = $(this).data("url");
+        var btnContext = this;
+        // console.log(typeof(urlData));
+        // console.log(typeof("follow"));
+        executeCallback( function() {
+            btnCallback(uid,fid, action, btnContext);
+        });
+    });
+
+    function btnCallback(uid,fid, action, context) {
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: "POST",
+            url : "/follow",
+            data: {
+                user_id: uid,
+                user_following_id: fid,
+                action: action,
+            },
+            error: function(result,status,errorMsg) {
+                console.log(status+" Message: "+errorMsg);
+                if($(".text-danger").length) {
+                    $(".text-danger").text("Unable to follow user!!");
+                } else {
+                    $(`<div class="text-danger"> ${"Unable to follow user"}</div>`).insertAfter(context);
+                }
+            },
+            complete: function(data, status) {
+                if(data.status === 200) {
+                    if(action === "follow") {
+                        $(context).data("url",'unfollow');
+                        $(context).text("Unfollow");
+                    } else if (action === "unfollow") {
+                        $(context).data("url",'follow');
+                        $(context).text("Follow");
+                    }
+                }
+                $(context).attr("disabled",false);
+            }
+        });
     }
 </script>
 
@@ -66,8 +172,23 @@
         <div id="sidebar" class="nav-collapse" tabindex="5000" style="overflow:hidden; outline:none;">
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
-                <p class="centered"><a href="/profile"><img src="{{URL::to('img/pika.png')}}" class="img-circle" width="80"></a></p>
-                <h5 class="centered">Boku no Pika</h5>
+                <!-- grab profile owner's info -->
+                @if(!Auth::guest())
+                    @php
+                        $avatarSide = '/storage/avatars/' . UsersController::getAvatar(Auth::user()->id);
+                        $dpName = Auth::user()->name;
+                        $profile = '/users/' .Auth::user()->id
+                    @endphp
+                @else
+                    @php
+                        $avatarSide = "img/homam.png" ;
+                        $dpName = "GUEST";
+                        $profile = '/'
+                    @endphp 
+                @endif
+
+                <p class="centered"><a href="/users/{{Auth::user()->id}}"><img src="{{ $avatarSide }}" class="img-circle" width="80"></a></p>
+                    <h5 class="centered">{{$dpName}}</h5>
                 <li>
                     <a class="dcjq-parent" href="javascript:;" onclick="load_main_content('/dashboard')">
                         <i class="fa fa-dashboard"></i>
