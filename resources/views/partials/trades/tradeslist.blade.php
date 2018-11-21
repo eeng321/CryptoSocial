@@ -1,12 +1,11 @@
 <?php use App\Http\Controllers\UsersController; ?>
-<?php use App\Http\Controllers\ReplyController; ?>
+<?php use App\Http\Controllers\TradeReplyController; ?>
 
 <div id="accordion">
     {{-- Filler. Implement a For loop to dynamically add updates--}}
 
-
         <div class="my-3 p-3 bg-white rounded shadow-sm">
-            <h6 class="border-bottom border-gray pb-2 mb-0">Recent Posts</h6>
+            <h6 class="border-bottom border-gray pb-2 mb-0">Recent Trades</h6>
 
             @foreach($trades as $trade)
             <div class="media text-muted pt-3">
@@ -15,9 +14,12 @@
                 @endphp
                 <img src='{{ $avatar }}' alt="" class="mr-2 rounded" width="60" height="60">
                 <p class="media-body pb-3 mb-0  lh-125 border-bottom border-gray">
-                    <strong class="d-block text-gray-dark">{{ $trade->coin}}</strong>
-                    <strong class="d-block text-gray-dark">{{ UsersController::getName($trade->author_id) }} - {{ $trade->created_at}}</strong>
-                    Bought at: {{ $trade->buy_price }}. Sold at: {{ $trade->sell_price }}. Difference: {{ $trade->buy_price - $trade->sell_price }}
+                    <strong class="d-block text-gray-dark">{{ UsersController::getName($trade->user_id) }} - {{ $trade->created_at}}</strong>
+                    Coin: {{ $trade->coin }}<br>
+                    Bought at: ${{ $trade->buy_price }}<br>
+                    Sold at: ${{ $trade->sell_price }}<br>
+                    Difference: ${{ $trade->buy_price - $trade->sell_price }}<br>
+                    Time: {{ $trade->trade_time }}
                     <br>
                     <a class="d-block text-right mt-3" data-toggle="collapse" href="#collapse{{ $trade->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                         Comments</a>
@@ -26,7 +28,7 @@
              <div id="collapse{{ $trade->id}}" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <h6 class="border-bottom border-gray pb-2 mb-0">Replies</h6>
-                        @foreach(ReplyController::getReplies($trade->id) as $reply)
+                        @foreach(TradeReplyController::getReplies($trade->id) as $reply)
                         @php
                             $avatar = 'storage/avatars/' . UsersController::getAvatar($reply->user_id);
                         @endphp
@@ -40,9 +42,9 @@
                         </div>
                         @endforeach
                         @if (!Auth::guest())
-                        <form method="POST" action="{{ route('replies.store') }}">
+                        <form method="POST" action="{{ route('tradereplies.store') }}">
                         @csrf
-                                <input type='hidden' name='post_id' value={{ $trade->id }}>
+                                <input type='hidden' name='trade_id' value={{ $trade->id }}>
                                 <input type='hidden' name='user_id' value='{{ $myId }}'>
 
                                 <div class="form-group small">

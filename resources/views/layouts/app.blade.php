@@ -82,4 +82,5 @@
     @include('auth/register')
 
     <script src="{{"js/app.js"}}"></script>
+    @yield('scripts');
 </html>

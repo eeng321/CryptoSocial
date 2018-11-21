@@ -28,7 +28,12 @@
 
                     <div class="form-group">
                         <label for="trade_time">Trade time<span class="require">*</span></label>
-                        <input type="datetime-local" class="timepicker form-control" name="trade_time">
+                        <div class="input-group">
+                            <input type="datetime-local" class="timepicker form-control" name="trade_time" id="trade_time">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" id="btn-now">Now</button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -49,3 +54,12 @@
             </div>
         </div>
     </div>
+    @section('scripts')
+    <script>
+        $(() => {
+            $('#btn-now').click(() => {
+                $('#trade_time').val((new Date).toISOString().slice(0, 16));
+            });
+        });
+    </script>
+    @endsection()
