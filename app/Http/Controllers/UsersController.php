@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -35,9 +36,12 @@ class UsersController extends Controller
         //display user profile 
         // path: /users/{id/name ??} 
         $displayedUser = $this->userrequest->getbyid($id);
-        dd($displayedUser);
-        $data['userProfile'] = $displayedUser;
-        return view('placeholder',$data);
+        $data['userProfile'] = $displayedUser->attributesToArray();
+        $matchThese = ['user_id' => Auth::User()->id, 'user_following_id' => $id];
+        $count = \DB::table('followers')->where($matchThese)->count();
+        $isFollow = $count > 0;
+        $data['isFollowing'] = $isFollow;
+        return view('tempprof',$data);
     }
 
     public function edit()

@@ -32,6 +32,7 @@ Route::group(['middleware' => ['user_set']], function () {
 
 });
 
+Route::post('follow', 'FollowerController@follow_unfollow');
 Route::resource('posts', 'PostController')->only([
     'index' ,'destroy'
     ]);
