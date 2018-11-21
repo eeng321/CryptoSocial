@@ -25,8 +25,8 @@
     }
     //use for watchlist page
 
-    function addWatchlistItem(name){
-        <?php $results = $Coins->populateCoins() ?>
+    function addWatchlistItem(){
+        // <?php $results = $Coins->populateCoins() ?>
         // Find a <table> element with id="myTable":
         var table = document.getElementById("watchlistTable");
 
@@ -39,11 +39,13 @@
         var cellPrice = row.insertCell(-1);
         var cellChange = row.insertCell(-1);
 
-
+        var name = document.getElementById('watchlistSearch').value;
+        
+            
         if(name != ""){
             // Add some text to the new cells:
-            var price = {!! $Coins->getCoinDetail("Bitcoin")->getPrice(); !!};
-            cellName.innerHTML = coin;
+            var price = 10;
+            cellName.innerHTML = name;
             cellPrice.innerHTML = price;
             // cellChange.innerHTML = change;
         }
