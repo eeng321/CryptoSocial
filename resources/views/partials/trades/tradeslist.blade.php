@@ -46,6 +46,7 @@
                         @csrf
                                 <input type='hidden' name='trade_id' value={{ $trade->id }}>
                                 <input type='hidden' name='user_id' value='{{ $myId }}'>
+                                <input type='hidden' name='page' value='trades'>
 
                                 <div class="form-group small">
                                     <input class="form-control" type="text" placeholder="Enter Comment" name="content"/>

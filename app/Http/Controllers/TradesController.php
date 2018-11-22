@@ -59,7 +59,10 @@ class TradesController extends Controller
             'coin' => $request->get('coin')
         ]);
         $trade->save();
-        return redirect('/trades')->with('success', 'Trade has been added');
+        if($request->get('page') == 'users'){
+            return redirect('/users/' .$request->get('user_id'))->with('success', 'Reply has been added');
+        }else
+            return redirect('/trades')->with('success', 'Trade has been added');
     }
 
     /**

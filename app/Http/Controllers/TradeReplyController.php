@@ -31,7 +31,10 @@ class TradeReplyController extends Controller
         'content'=> $request->get('content')
       ]);
       $reply->save();
-      return redirect('/trades')->with('success', 'Reply has been added');
+      if($request->get('page') == 'users'){
+        return redirect('/users/' .$request->get('user_id'))->with('success', 'Reply has been added');
+      }else
+        return redirect('/trades')->with('success', 'Reply has been added');
     }
 
 

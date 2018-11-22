@@ -71,8 +71,10 @@ class UsersController extends Controller
         //display user profile 
         // path: /users/{id/name ??} 
         $displayedUser = $this->userrequest->getbyid($id);
+        $myTrades = \DB::table('trades')->where('user_id',$id)->paginate(100);
       //  dd($displayedUser);
         $data['userProfile'] = $displayedUser;
+        $data['myTrades'] = $myTrades;
         return view('partials/profile/myTrades',$data);
     }
 
