@@ -59,8 +59,8 @@
                                     {{ __('Login') }}
                                 </button>
                                 
-                                <a href="#" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="btn btn-link float-right" id="regis">Register</a>
-                                <a class="btn btn-link float-right" href="{{ route('password.request') }}">
+                                <a href="#" data-toggle="modal" data-target="#registerModal" data-dismiss="modal" class="btn btn-link float-right" id="regis" onclick="clearLoginForm()">Register</a>
+                                <a class="btn btn-link float-right" href="#">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             </div>
