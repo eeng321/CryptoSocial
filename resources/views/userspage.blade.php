@@ -1,4 +1,5 @@
 <?php use App\Http\Controllers\FollowerController; ?>
+<?php use App\Http\Controllers\TradesController; ?>
 @extends('layouts.app')
 
 @section('title', 'Users')
@@ -34,7 +35,7 @@
                                 <span class='badge badge-secondary badge-pill'>Not Following</span>
                             @endif
                         @endif
-                        <span class='badge badge-primary badge-pill'>0 trades</span>
+                        <span class='badge badge-primary badge-pill'>{{TradesController::getTradeCount($user->id)}} trades</span>
                         </p>
                     </a>
                 @endforeach

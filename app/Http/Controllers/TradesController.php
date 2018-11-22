@@ -109,4 +109,9 @@ class TradesController extends Controller
     {
         //
     }
+
+    public static function getTradeCount($id){
+        $trades = \DB::table('trades')->where('user_id', $id)->count();
+        return $trades;
+    }  
 }

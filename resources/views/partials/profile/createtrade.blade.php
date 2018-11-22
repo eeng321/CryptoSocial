@@ -15,23 +15,23 @@
 
                     <div class="form-group">
                         <label for="coin">Coin<span class="require">*</span></label>
-                        <input type="text" class="form-control" name="coin" />
+                        <input type="text" class="form-control" name="coin" required />
                     </div>
 
                     <div class="form-group">
                         <label for="buy_price">Buy price<span class="require">*</span></label>
-                        <input type="number" step="0.01" class="form-control" name="buy_price" />
+                        <input type="number" step="0.01" class="form-control" name="buy_price" required  />
                     </div>
 
                     <div class="form-group">
                         <label for="sell_price">Sell price<span class="require">*</span></label>
-                        <input type="number" step="0.01" class="form-control" name="sell_price" />
+                        <input type="number" step="0.01" class="form-control" name="sell_price" required />
                     </div>
 
                     <div class="form-group">
                         <label for="trade_time">Trade time<span class="require">*</span></label>
                         <div class="input-group">
-                            <input type="datetime-local" class="timepicker form-control" name="trade_time" id="trade_time">
+                            <input type="datetime-local" class="timepicker form-control" name="trade_time" id="trade_time" required >
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button" id="btn-now">Now</button>
                             </div>

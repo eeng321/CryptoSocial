@@ -41,26 +41,24 @@
 
                     <div class="form-group">
                             <label for="password">New Password<span class="require">*</span></label>
-                            <input type="password" class="form-control"  name ="password" required/>
+                            <input type="password" class="form-control" minlength=6  name ="password" id="passwordone" onkeyup='check();' required/>
                         </div>
 
                     <div class="form-group">
                         <label for="password-confirm">Confirm Password<span class="require">*</span></label>
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                        <input id="password-confirmone" type="password"  minlength=6 class="form-control" name="password_confirmation" onkeyup='check();' required>
                          </div>
+                         <span id='message'></span>
 
                     <div class="form-group">
                         <p><span class="require">*</span> - required fields</p>
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" id="mybutton" class="btn btn-primary">
                             Create
                         </button>
 
-                        <button class="btn btn-default">
-                            Cancel
-                        </button>
                     </div>
 
                 </form>
@@ -70,3 +68,20 @@
 @endsection()
 
 @section('footer')
+@section('scripts')
+<script>
+//adapted from https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field-in-form-without-reloading-page/21727555
+    var check = function() {
+    if (document.getElementById('passwordone').value ==
+        document.getElementById('password-confirmone').value) {
+        document.getElementById('message').style.color = 'green';
+        document.getElementById('message').innerHTML = 'matching';
+        document.getElementById('mybutton').style.visibility = 'visible';
+    } else {
+        document.getElementById('message').style.color = 'red';
+        document.getElementById('message').innerHTML = 'not matching';
+        document.getElementById('mybutton').style.visibility = 'hidden'
+    }
+}
+</script>
+@endsection()

@@ -56,7 +56,7 @@
                                 
 
                                 <div class="form-group small">
-                                    <input class="form-control" type="text" placeholder="Enter Comment" name="content"/>
+                                    <input class="form-control" type="text" placeholder="Enter Comment" name="content" required />
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

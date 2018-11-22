@@ -16,7 +16,7 @@ class TradeReplyController extends Controller
     public static function getReplyCount($id){
       $replies = \DB::table('trade_replies')->where('trade_id', $id)->count();
       return $replies;
-  }
+    }
 
     public function store(Request $request)
     {
