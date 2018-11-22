@@ -1,16 +1,22 @@
 <?php use App\Http\Controllers\UsersController; ?>
 <?php use App\Http\Controllers\TradeReplyController; ?>
-
+<div class="wrapper">
+    <section id="content">
+@if (!Auth::guest())
+    @if(Auth::user()->id == $userProfile->id)
+    @include('partials.profile.createtrade')
+    @endif
+@endif
 <div id="accordion">
     {{-- Filler. Implement a For loop to dynamically add updates--}}
 
         <div class="my-3 p-3 bg-white rounded shadow-sm">
             <h6 class="border-bottom border-gray pb-2 mb-0">Recent Trades</h6>
 
-            @foreach($trades as $trade)
+            @foreach($myTrades as $trade)
             <div class="media text-muted pt-3">
                 @php
-                    $avatar = 'storage/avatars/' . UsersController::getAvatar($trade->user_id);
+                    $avatar = '/storage/avatars/' . UsersController::getAvatar($trade->user_id);
                 @endphp
                 <img src='{{ $avatar }}' alt="" class="mr-2 rounded" width="60" height="60">
                 <p class="media-body pb-3 mb-0  lh-125 border-bottom border-gray">
@@ -18,7 +24,7 @@
                     Coin: {{ $trade->coin }}<br>
                     Bought at: ${{ $trade->buy_price }}<br>
                     Sold at: ${{ $trade->sell_price }}<br>
-                    Result: {{ ($trade->sell_price - $trade->buy_price) >= 0 ? '+$' . ($trade->sell_price - $trade->buy_price) : '–$' . abs(round($trade->sell_price - $trade->buy_price, 2)) }}<br>
+                    Difference: {{ ($trade->buy_price - $trade->sell_price) >= 0 ? '$' . ($trade->buy_price - $trade->sell_price) : '–$' . abs(round($trade->buy_price - $trade->sell_price, 2)) }}<br>
                     Time: {{ $trade->trade_time }}
                     <br>
                     <a class="d-block text-right mt-3" data-toggle="collapse" href="#collapse{{ $trade->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -30,10 +36,10 @@
                         <h6 class="border-bottom border-gray pb-2 mb-0">Replies</h6>
                         @foreach(TradeReplyController::getReplies($trade->id) as $reply)
                         @php
-                            $avatar = 'storage/avatars/' . UsersController::getAvatar($reply->user_id);
+                            $avatar = '/storage/avatars/' . UsersController::getAvatar($reply->user_id);
                         @endphp
                             <div class="media text-muted pt-3">
-                            <img src='{{$avatar}}'alt="" class="mr-2 rounded" width="60" height="60">
+                            <img src='{{ $avatar }}'alt="" class="mr-2 rounded" width="60" height="60">
                             <p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
                                 <strong class="d-block text-gray-dark">{{ UsersController::getName($reply->user_id) }} - {{$reply->created_at}}</strong>
                                 {{$reply->content}}
@@ -45,11 +51,12 @@
                         <form method="POST" action="{{ route('tradereplies.store') }}">
                         @csrf
                                 <input type='hidden' name='trade_id' value={{ $trade->id }}>
-                                <input type='hidden' name='user_id' value='{{ $myId }}'>
-                                <input type='hidden' name='page' value='trades'>
+                                <input type='hidden' name='user_id' value='{{ Auth::user()->id}}'>
+                                <input type='hidden' name='page' value='users'>
+                                
 
                                 <div class="form-group small">
-                                    <input class="form-control" type="text" placeholder="Enter Comment" name="content"/>
+                                    <input class="form-control" type="text" placeholder="Enter Comment" name="content" required />
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
@@ -57,6 +64,8 @@
                     </div>
                 </div>
             @endforeach
-        {{ $trades->links()}}
+        {{ $myTrades->links()}}
         </div>
+</div>  
+</section>
 </div>

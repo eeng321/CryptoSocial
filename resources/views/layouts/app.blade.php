@@ -9,7 +9,7 @@
 
         {{-- Stylesheets --}}
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-        <link href="{{"/css/app.css"}}" rel="stylesheet" type="text/css">
+        <link href="{{URL::to("css/app.css")}}" rel="stylesheet" type="text/css">
     </head>
     <body>
         {{-- Navbar Section--}}
@@ -28,9 +28,9 @@
                           Community
                         </a>
                         <div class="dropdown-menu" aria-labelledby="commDropdown">
-                            <a class="dropdown-item" href="trades">Trades</a>
-                            <a class="dropdown-item" href="posts">Discussion</a>
-                            <a class="dropdown-item" href="users">Users</a>
+                            <a class="dropdown-item" href="/posts">Posts</a>
+                            <a class="dropdown-item" href="/users">Users</a>
+                            <a class="dropdown-item" href="/trades">Trades</a>
                         </div>
                     </li>
                     {{-- Vu change this Login anchor to whatever you need--}}
@@ -46,7 +46,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="userDropdown">
                             <!-- For you Edmond -->
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="{{ '/users/'.Auth::user()->id }}">Profile</a>
                             <a class="dropdown-item" href="{{ url('/edit') }}">Edit</a>
                             <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
                         </div>
@@ -83,5 +83,10 @@
     @include('auth/register')
 
     <script src="{{URL::to("js/app.js")}}"></script>
+    @if (session('showLogin'))
+        <script>
+            $('#loginModal').modal('show');
+        </script>
+    @endif
     @yield('scripts');
 </html>

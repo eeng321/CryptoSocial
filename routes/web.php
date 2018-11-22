@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,21 +15,36 @@
 Route::get('/', function () {
     $userCount = DB::table('users')->count();
     return view('home', ['userCount' => $userCount]);
+})->name('home');
+
+
+Route::get('trades', function() {
+    return view('trades');
 });
+
 
 //testing sharing user_data across views
 // gets current auth()->user() shares for each view in $userData
 Route::group(['middleware' => ['user_set']], function () {
     //routes that use ^ middleware defined in \App\Http\Kernel.php
     //user route
+    Route::get('users/{id}/dashboard', 'UsersController@dashboard');
+    Route::get('users/{id}/trades', 'UsersController@myTrades');
+    Route::get('users/{id}/watchlist', 'UsersController@myWatchlist');
+    Route::get('users/{id}/chat', 'UsersController@chat');
+
     Route::get('edit', 'UsersController@edit');
     Route::post('edit', 'UsersController@update');
 
-    Route::resource('users', 'UsersController')->only([
-        'index', 'show',
-    ]);
+    
 
+    Route::resource('users', 'UsersController')->only([
+        'index', 'show', 'myWatchlist', 'dashboard', 'myTrades', 'chat'
+        ]);
+   
 });
+
+Route::post('storeWallet', 'WalletController@store');
 
 Route::post('follow', 'FollowerController@follow_unfollow');
 Route::resource('posts', 'PostController')->only([
@@ -47,17 +61,14 @@ Route::resources([
     'users' => 'UsersController',
     'posts' => 'PostController',
     'replies' => 'ReplyController',
+
+    'wallets' => 'WalletController',
+
     'trades' => 'TradesController',
     'tradereplies' => 'TradeReplyController'
+
 ]);
 
-// Route::resource('users', 'UserController')->except([
-//     'create', 'store', 'update', 'destroy'
-// ]);
-/*
-Route::auth();
-Route::guest();
-Route::check(); */
 
 Auth::routes();
 

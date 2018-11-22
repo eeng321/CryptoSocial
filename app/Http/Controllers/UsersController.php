@@ -36,6 +36,56 @@ class UsersController extends Controller
         //display user profile 
         // path: /users/{id/name ??} 
         $displayedUser = $this->userrequest->getbyid($id);
+      //  dd($displayedUser);
+        $data['userProfile'] = $displayedUser;
+        return view('profile',$data);
+    }
+
+    public function myWatchlist($id)
+    {
+        //display user profile 
+        // path: /users/{id/name ??} 
+        $displayedUser = $this->userrequest->getbyid($id);
+      //  dd($displayedUser);
+        $data['userProfile'] = $displayedUser;
+        return view('partials/profile/myWatchlist',$data);
+    }
+
+    
+    public function dashboard($id)
+    {
+        //display user profile 
+        // path: /users/{id/name ??} 
+        $displayedUser = $this->userrequest->getbyid($id);
+      //  dd($displayedUser);
+        $data['userProfile'] = $displayedUser;
+        $matchThese = ['user_id' => Auth::User()->id, 'user_following_id' => $id];
+        $count = \DB::table('followers')->where($matchThese)->count();
+        $isFollow = $count > 0;
+        $data['isFollowing'] = $isFollow;
+        return view('partials/profile/dashboard',$data);
+    }
+
+    public function myTrades($id)
+    {
+        //display user profile 
+        // path: /users/{id/name ??} 
+        $displayedUser = $this->userrequest->getbyid($id);
+        $myTrades = \DB::table('trades')->where('user_id',$id)->paginate(100);
+      //  dd($displayedUser);
+        $data['userProfile'] = $displayedUser;
+        $data['myTrades'] = $myTrades;
+        return view('partials/profile/myTrades',$data);
+    }
+
+    public function chat($id)
+    {
+        //display user profile 
+        // path: /users/{id/name ??} 
+        $displayedUser = $this->userrequest->getbyid($id);
+      //  dd($displayedUser);
+        $data['userProfile'] = $displayedUser;
+        return view('partials/profile/chat',$data);
         $data['userProfile'] = $displayedUser->attributesToArray();
         $matchThese = ['user_id' => Auth::User()->id, 'user_following_id' => $id];
         $count = \DB::table('followers')->where($matchThese)->count();
