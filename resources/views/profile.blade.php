@@ -1,3 +1,5 @@
+<?php use App\Http\Controllers\FollowerController; ?>
+
 <!-- Inspired by Dashio template -->
 <?php use App\Http\Controllers\UsersController; ?>
 
@@ -172,6 +174,7 @@
 
                 <p class="centered"><a href={{$profile}}><img src="{{ $avatarSide }}" class="img-circle" width="80"></a></p>
                     <h5 class="centered">{{$dpName}}</h5>
+              
                 <li>
                     <a class="dcjq-parent" href="javascript:;" onclick="load_main_content('/dashboard')">
                         <i class="fa fa-dashboard"></i>
@@ -197,6 +200,10 @@
                     </a>
                 </li>
             </ul>
+            <div id="followBottom">
+                <h5 class="centered">Followers: {{FollowerController::countFollowers($userProfile->id)}}</h5>
+                <h5 class="centered">Following: {{FollowerController::countFollowing($userProfile->id)}}</h5>
+            </div>        
         </div>
     <!-- sidebar menu end-->
     </aside>

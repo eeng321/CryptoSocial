@@ -1,5 +1,6 @@
 <?php use App\Http\Controllers\UsersController; ?>
 <?php use App\Http\Controllers\TradeReplyController; ?>
+
 <div class="wrapper">
     <section id="content">
 @if (!Auth::guest())
