@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Reply;
+use App\Wallet;
 
 class WalletController extends Controller
 {
@@ -27,7 +28,7 @@ class WalletController extends Controller
         'amount'=> $request->get('amount')
       ]);
       $wallet->save();
-      return redirect('/posts')->with('success', 'Wallet has been added');
+      return redirect('/users/'. $request->input('user_id'))->with('success', 'Wallet has been added');
     }
 
 

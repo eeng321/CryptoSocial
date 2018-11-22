@@ -17,7 +17,7 @@ class CreateWalletsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('coin');
-            $table->decimal('amount', 10, 10);
+            $table->decimal('amount', 10, 2);
             $table->primary(array('user_id', 'coin'));
             $table->timestamps();
         });

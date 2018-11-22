@@ -1,5 +1,6 @@
 <!-- Inspired by Dashio template -->
 <?php use App\Http\Controllers\UsersController; ?>
+
 @extends('layouts.app')
 
 @section('scripts')
@@ -29,66 +30,19 @@
     }
     //use for watchlist page
     //helper making api call to get coin
-    // function getCoinInfo(name) {
-    //     var coin = {
-    //         price : "",
-    //         changeIn24 : ""
-    //     };
 
-    //     const Http = new XMLHttpRequest();
-    //     const url='https://api.coinmarketcap.com/v2/listings/';
-    //     Http.open("GET", url);
-    //     Http.send();
-    //     var jsonString = "";
-    //     Http.onreadystatechange= function(){
-    //         if(this.readyState==4 && this.status==200) {
-    //             var jsonString = JSON.parse(Http.response);
-    //             //console.log(jsonString);
-    //             //document.write(jsonString.data[0].name);
-
-
-    //             console.log(jsonString.data.length);
-
-
-    //             var coinID = "";
-    //             for(var i = 0; i < jsonString.data.length; i++) {
-    //                 if(jsonString.data[i].name === name) {
-    //                     coinID = jsonString.data[i].id;
-    //                     break;
-    //                 }
-    //             }
-
-
-    //             var coinUrl = "https://api.coinmarketcap.com/v2/ticker/" + coinID +"/";
-    //             console.log(coinUrl);
-    //             Http.open("GET", coinUrl);
-    //             Http.send();
-    //             Http.onreadystatechange= function(){
-    //                 if(this.readyState==4 && this.status==200) {
-    //                     var json = JSON.parse(Http.response);
-    //                     console.log(json);
-
-
-    //                     coin.price = json.data.quotes.USD.price;
-    //                     coin.changeIn24 = json.data.quotes.USD.percent_change_24h;
-    //                     console.log(coin.price);
-    //                     console.log(coin.changeIn24);
-    //                     return coin;
-    //                 }
-
-    //             }
-    //         }
-    //     }
-    // }
-
-
-    function getCoinInfo() {
+    function getCoinInfo(page, coinName) {
         var coin = {
             name : "",
             price : "",
             changeIn24 : ""
         };
-        var name = document.getElementById('watchlistSearch').value;
+        if(page == "watch"){
+            var name = document.getElementById('watchlistSearch').value;
+        }
+        else{
+            var name = coinName
+        }
         if(name !== "") {
             const Http = new XMLHttpRequest();
             const url='https://api.coinmarketcap.com/v2/listings/';
@@ -101,7 +55,7 @@
                     
 
 
-                    console.log(jsonString.data.length);
+                    // console.log(jsonString.data.length);
 
 
                     var coinID = "";
@@ -114,26 +68,49 @@
 
 
                     var coinUrl = "https://api.coinmarketcap.com/v2/ticker/" + coinID +"/";
-                    console.log(coinUrl);
+                    // console.log(coinUrl);
                     Http.open("GET", coinUrl);
                     Http.send();
                     Http.onreadystatechange= function(){
                         if(this.readyState==4 && this.status==200) {
                             var json = JSON.parse(Http.response);
-                            console.log(json);
+                            // console.log(json);
 
                             coin.name = json.data.name;
                             coin.price = json.data.quotes.USD.price;
                             coin.changeIn24 = json.data.quotes.USD.percent_change_24h;
-                            console.log(coin.price);
-                            console.log(coin.changeIn24);
-                            addWatchlistItem(coin);
+                            // console.log(coin.price);
+                            // console.log(coin.changeIn24);
+                            if(page == "watch"){
+                                addWatchlistItem(coin);
+                            }
+                            else{
+                                addPortfolio(coin);
+                            }
+                            
                         }
 
                     }
                 }
             }
         }
+    }
+
+    function addPortfolio(coin){
+        var list = document.getElementById('portfolio');
+        var coinName = coin.name;
+        var coinPrice = coin.price;
+        var coinChange = coin.changeIn24;
+        var entry = document.createElement('li');
+        entry.classList.add("form-inline")
+        var color = document.createElement('div')
+        color.classList.add("legend")
+        // entry.appendChild(document.createTextNode(coinName));
+        entry.appendChild(document.createTextNode(coinPrice));
+
+        entry.appendChild(document.createTextNode(coinChange));
+        list.appendChild(entry);
+  
     }
 
     function addWatchlistItem(coin){
