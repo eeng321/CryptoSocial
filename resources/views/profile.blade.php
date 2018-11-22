@@ -19,6 +19,14 @@
 
     }
 
+    function load_main_trades()
+    {
+ 
+        var guest = {{ collect(request()->segments())->last() }}
+        $('#replace').load(guest + '/trades');
+
+    }
+
     //display change of coin in red or green
     function displayChange24(change, divID){
         if(change > 0 ){
@@ -205,8 +213,11 @@
 
 @section('content')
 
-
-    <body onload="load_main_content('/dashboard');"> 
+    @if(!empty($_GET['return']))
+        <body onload="load_main_trades();"> 
+    @else
+        <body onload="load_main_content('/dashboard');"> 
+    @endif
         <div id="replace">
         
         <!-- /replace content -->
