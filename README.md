@@ -36,3 +36,11 @@
 ## seeding the database
 - you can add 50 random users with the command `php artisan db:seed`
 - you can delete everything in the database with the command `php artisan migrate:refresh`
+
+## creating profile pictures folder
+- `php artisan storage:link`
+
+## building the project
+- `composer install`
+- `npm install`
+- `npm run prod`

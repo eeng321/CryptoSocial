@@ -15,12 +15,12 @@
              
                     <div class="form-group">
                         <label for="title">Title<span class="require">*</span></label>
-                        <input type="text" class="form-control" name="title" />
+                        <input type="text" class="form-control" name="title" required />
                     </div>
                     
                     <div class="form-group">
                         <label for="description">Description<span class="require">*</span></label>
-                        <textarea rows="5" class="form-control" name="content" ></textarea>
+                        <textarea rows="5" class="form-control" name="content" required ></textarea>
                     </div>
                     
                     <div class="form-group">

@@ -23,7 +23,7 @@
                     
                     <div class="form-group">
                         <label for="description">Reply<span class="require">*</span></label>
-                        <textarea rows="5" class="form-control" name="content" ></textarea>
+                        <textarea rows="5" class="form-control" name="content"required ></textarea>
                     </div>
                     
                     <div class="form-group">

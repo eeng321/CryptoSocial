@@ -1,4 +1,5 @@
 <?php use App\Http\Controllers\FollowerController; ?>
+<?php use App\Http\Controllers\TradesController; ?>
 @extends('layouts.app')
 
 @section('title', 'Users')
@@ -28,13 +29,15 @@
                         {{$user->name}}
                         <p>
                         @if (!Auth::guest())
-                            @if(FollowerController::following(Auth::user()->id, $user->id))
-                                <span class='badge badge-success badge-pill'>following</span>
-                            @else
-                                <span class='badge badge-secondary badge-pill'>Not Following</span>
+                            @if(Auth::user()->id != $user->id)
+                                @if(FollowerController::following(Auth::user()->id, $user->id))
+                                    <span class='badge badge-success badge-pill'>following</span>
+                                @else
+                                    <span class='badge badge-secondary badge-pill'>Not Following</span>
+                                @endif
                             @endif
                         @endif
-                        <span class='badge badge-primary badge-pill'>0 trades</span>
+                        <span class='badge badge-primary badge-pill'>{{TradesController::getTradeCount($user->id)}} trades</span>
                         </p>
                     </a>
                 @endforeach

@@ -9,16 +9,18 @@
                 <form method="POST" action="{{ route('trades.store') }}">
                 @csrf
 
-                    <input type='hidden' name='user_id' value='{{ $myId }}'>
+                    <input type='hidden' name='user_id' value='{{ Auth::user()->id }}'>
+                    <input type='hidden' name='page' value='users'>
+                    
 
                     <div class="form-group">
                         <label for="coin">Coin<span class="require">*</span></label>
-                        <input type="text" class="form-control" name="coin"required  />
+                        <input type="text" class="form-control" name="coin" required />
                     </div>
 
                     <div class="form-group">
                         <label for="buy_price">Buy price<span class="require">*</span></label>
-                        <input type="number" step="0.01" class="form-control" name="buy_price" required />
+                        <input type="number" step="0.01" class="form-control" name="buy_price" required  />
                     </div>
 
                     <div class="form-group">
@@ -54,7 +56,6 @@
             </div>
         </div>
     </div>
-    @section('scripts')
     <script>
         $(() => {
             $('#btn-now').click(() => {
@@ -62,4 +63,4 @@
             });
         });
     </script>
-    @endsection()
+

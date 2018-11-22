@@ -5,7 +5,7 @@
 @endphp
 <div class="card-body rounded bg-white shadow-sm">
 <div class="d-flex align-items-center p-3 my-3 text-black-50 ">
-        <img class="mr-3 rounded-circle" src="{{ $avatar }}" alt="" width="100" height="100">
+        <img class="mr-3 rounded" src="{{ $avatar }}" alt="" width="100" height="100">
         <div class="lh-100 border-bottom border-gray">
             <h3 >{{ $post->title }}</h3>
             <p>{{UsersController::getName($post->author_id)}} @ {{ $post->created_at}}</p>
