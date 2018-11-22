@@ -27,6 +27,7 @@
             document.getElementById(divID+"-down").style.display="inline";
         }
     }
+    
     //use for watchlist page
     //helper making api call to get coin
     // function getCoinInfo(name) {

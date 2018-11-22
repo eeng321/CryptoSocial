@@ -56,7 +56,6 @@
             </div>
         </div>
     </div>
-    @section('scripts')
     <script>
         $(() => {
             $('#btn-now').click(() => {
@@ -64,4 +63,4 @@
             });
         });
     </script>
-    @endsection()
+

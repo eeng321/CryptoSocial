@@ -251,7 +251,7 @@
             btnCallback(uid,fid, action, btnContext);
         });
     });
-
+    
     function btnCallback(uid,fid, action, context) {
         $.ajax({
             headers: {
