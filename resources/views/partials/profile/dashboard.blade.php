@@ -1,5 +1,6 @@
 <?php use App\Http\Controllers\UsersController; ?> 
 <?php use App\Http\Controllers\FollowerController; ?>
+<?php use App\Http\Controllers\WalletController; ?>
 
 <div class="wrapper">
     <!-- Main Content -->
@@ -138,6 +139,8 @@
                     <div class="panel-left">
                         <div class="d-inline-block"> 
                             <canvas id="donutPortfolio" height="120" width="120"></canvas>
+                            
+                            
                                 <script>
                                 var doughnutData = [{
                                         value: 42,
@@ -152,8 +155,9 @@
                                         color: "#4fd98b"
                                     },
                                 ];
+                                
                                 var myDoughnut2 = new Chart(document.getElementById("donutPortfolio").getContext("2d")).Doughnut(doughnutData);
-                                </script>
+                            </script>
                                 <footer>
                                     <h5>$171386</h5>
                                 </footer>
@@ -166,27 +170,40 @@
                     <div class="panel-right">
                         <div id="portfolio-scroll">
                         <div class="col-md-12 col-md-offset-2">
+                            
                             <!-- portfolio -->
-                            <ul id="portfolio">
-                                <li class="form-inline" >
-                                    <div class="legend" style="background: #4dc0b5;"></div>
-                                    <h5>BTC - ${{round($Coins->getCoinDetail("Bitcoin")->getPrice(),2)}} 
-                                        <script>
-                                            displayChange24({{round($Coins->getCoinDetail("Bitcoin")->getChangeIn24(),2)}}, "coin1" );    
-                                        </script>
-                                        <div id="coin1-up" style="display:none;">
-                                        <span class="value-up">
-                                            <i class="fa fa-caret-up hidden-sm hidden-xs">  {{round($Coins->getCoinDetail("Bitcoin")->getChangeIn24(),2)}} %</i>
-                                        </span>
-                                        </div>
-                                        <div id="coin1-down" style="display:none;">
-                                        <span class="value-down">
-                                            
-                                            <i class="fa fa-caret-down hidden-sm hidden-xs">  {{round($Coins->getCoinDetail("Bitcoin")->getChangeIn24(),2)}} %</i>
-                                        </span>
-                                        </div>
-                                    </h5>
+                            <ul id="portfolio" >
+                                
+                                @foreach(WalletController::getWallets($userProfile->id) as $wallet)
+                    
+                                {{-- <div class="legend" style="background: #4dc0b5;"></div> --}}
+                                
+                                {{-- <div id="coin"> </div> --}}
+                                <li class="form-inline">
+                                {{-- <div class="legend" style="background: #4dc0b5;"></div> --}}
+                                <h5>{{$wallet->coin}} - &nbsp;&nbsp;balance: {{$wallet->amount}}
+                                    
+                                    {{-- ${{round($Coins->getCoinDetail("Bitcoin")->getPrice(),2)}}  --}}
+
+                                    {{-- <script>
+                                        displayChange24({{round($Coins->getCoinDetail("Bitcoin")->getChangeIn24(),2)}}, "coin1" );    
+                                    </script>
+                                    <div id="coin1-up" style="display:none;">
+                                    <span class="value-up">
+                                        <i class="fa fa-caret-up hidden-sm hidden-xs">  {{round($Coins->getCoinDetail("Bitcoin")->getChangeIn24(),2)}} %</i>
+                                    </span>
+                                    </div>
+                                    <div id="coin1-down" style="display:none;">
+                                    <span class="value-down">
+                                        
+                                        <i class="fa fa-caret-down hidden-sm hidden-xs">  {{round($Coins->getCoinDetail("Bitcoin")->getChangeIn24(),2)}} %</i>
+                                    </span>
+                                    </div>  --}}
+                                </h5>
                                 </li>
+                                
+                                @endforeach
+                              
                             </ul>
                             
                         </div>
@@ -197,6 +214,7 @@
                 <!-- /grey-panel -->
             </div>
         </div>
+       
     </section>
 
 </div>
@@ -212,9 +230,9 @@
               </button>
             </div>
             <div class="modal-body">
-                {{-- <form method="POST" action="{{Form::open(array('action' => 'WalletController@store'))}}">
+                <form method="POST" action="{{ route('wallets.store') }}">
                 @csrf    
-                    <input type='hidden' name='user_id' value="{{Auth::user()->id}}">
+                    <input type='hidden' name="user_id" value="{{Auth::user()->id}}">
                 
                     <div class="form-group">
                         <label for="coin">Coin: <span class="require">*</span></label>
@@ -230,7 +248,7 @@
                         <button type="submit" class="btn btn-theme">Add</button>
                     </div>
         
-                </form> --}}
+                </form>
             </div>
             
           </div>
@@ -293,3 +311,5 @@
         });
     }
     </script>
+
+    

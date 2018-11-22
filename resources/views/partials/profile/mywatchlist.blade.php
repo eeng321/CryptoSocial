@@ -8,9 +8,9 @@
         @if(!Auth::guest() && Auth::user()->id == basename(Request::segment(2)) ) 
         <!-- Search form -->
         <div class="form-inline">
-            <form class="watchlistForm">
-                <input id="watchlistSearch"class="form-control form-control-md ml-3 w-60" type="text" placeholder="Search" aria-label="Search">
-                <button type="button" class="btn btn-theme" onclick="getCoinInfo()">Add</button>
+            <form class="watchlistForm" onsubmit="getCoinInfo('watch'); return false;">
+                <input id="watchlistSearch"class="form-control form-control-md ml-3 w-60" type="text">
+                <button id="watchlistBtn" type="button" class="btn btn-theme" onclick="getCoinInfo('watch')">Add</button>
             </form>
         </div>
         @endif
