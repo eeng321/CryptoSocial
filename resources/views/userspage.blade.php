@@ -29,10 +29,12 @@
                         {{$user->name}}
                         <p>
                         @if (!Auth::guest())
-                            @if(FollowerController::following(Auth::user()->id, $user->id))
-                                <span class='badge badge-success badge-pill'>following</span>
-                            @else
-                                <span class='badge badge-secondary badge-pill'>Not Following</span>
+                            @if(Auth::user()->id != $user->id)
+                                @if(FollowerController::following(Auth::user()->id, $user->id))
+                                    <span class='badge badge-success badge-pill'>following</span>
+                                @else
+                                    <span class='badge badge-secondary badge-pill'>Not Following</span>
+                                @endif
                             @endif
                         @endif
                         <span class='badge badge-primary badge-pill'>{{TradesController::getTradeCount($user->id)}} trades</span>
