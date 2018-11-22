@@ -10,7 +10,7 @@
         <div class="form-inline">
             <form class="watchlistForm">
                 <input id="watchlistSearch"class="form-control form-control-md ml-3 w-60" type="text" placeholder="Search" aria-label="Search">
-                <button type="button" class="btn btn-theme" onclick="addWatchlistItem()">Add</button>
+                <button type="button" class="btn btn-theme" onclick="getCoinInfo()">Add</button>
             </form>
         </div>
         @endif

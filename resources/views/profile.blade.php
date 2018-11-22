@@ -29,81 +29,134 @@
     }
     //use for watchlist page
     //helper making api call to get coin
-    function getCoinInfo(name) {
+    // function getCoinInfo(name) {
+    //     var coin = {
+    //         price : "",
+    //         changeIn24 : ""
+    //     };
+
+    //     const Http = new XMLHttpRequest();
+    //     const url='https://api.coinmarketcap.com/v2/listings/';
+    //     Http.open("GET", url);
+    //     Http.send();
+    //     var jsonString = "";
+    //     Http.onreadystatechange= function(){
+    //         if(this.readyState==4 && this.status==200) {
+    //             var jsonString = JSON.parse(Http.response);
+    //             //console.log(jsonString);
+    //             //document.write(jsonString.data[0].name);
+
+
+    //             console.log(jsonString.data.length);
+
+
+    //             var coinID = "";
+    //             for(var i = 0; i < jsonString.data.length; i++) {
+    //                 if(jsonString.data[i].name === name) {
+    //                     coinID = jsonString.data[i].id;
+    //                     break;
+    //                 }
+    //             }
+
+
+    //             var coinUrl = "https://api.coinmarketcap.com/v2/ticker/" + coinID +"/";
+    //             console.log(coinUrl);
+    //             Http.open("GET", coinUrl);
+    //             Http.send();
+    //             Http.onreadystatechange= function(){
+    //                 if(this.readyState==4 && this.status==200) {
+    //                     var json = JSON.parse(Http.response);
+    //                     console.log(json);
+
+
+    //                     coin.price = json.data.quotes.USD.price;
+    //                     coin.changeIn24 = json.data.quotes.USD.percent_change_24h;
+    //                     console.log(coin.price);
+    //                     console.log(coin.changeIn24);
+    //                     return coin;
+    //                 }
+
+    //             }
+    //         }
+    //     }
+    // }
+
+
+    function getCoinInfo() {
         var coin = {
+            name : "",
             price : "",
             changeIn24 : ""
         };
-
-        const Http = new XMLHttpRequest();
-        const url='https://api.coinmarketcap.com/v2/listings/';
-        Http.open("GET", url);
-        Http.send();
-        var jsonString = "";
-        Http.onreadystatechange= function(){
-            if(this.readyState==4 && this.status==200) {
-                var jsonString = JSON.parse(Http.response);
-                //console.log(jsonString);
-                //document.write(jsonString.data[0].name);
-
-
-                console.log(jsonString.data.length);
+        var name = document.getElementById('watchlistSearch').value;
+        if(name !== "") {
+            const Http = new XMLHttpRequest();
+            const url='https://api.coinmarketcap.com/v2/listings/';
+            Http.open("GET", url);
+            Http.send();
+            var jsonString = "";
+            Http.onreadystatechange= function(){
+                if(this.readyState==4 && this.status==200) {
+                    var jsonString = JSON.parse(Http.response);
+                    
 
 
-                var coinID = "";
-                for(var i = 0; i < jsonString.data.length; i++) {
-                    if(jsonString.data[i].name === name) {
-                        coinID = jsonString.data[i].id;
-                        break;
+                    console.log(jsonString.data.length);
+
+
+                    var coinID = "";
+                    for(var i = 0; i < jsonString.data.length; i++) {
+                        if(jsonString.data[i].name.toLowerCase() === name.toLowerCase()) {
+                            coinID = jsonString.data[i].id;
+                            break;
+                        }
                     }
-                }
 
 
-                var coinUrl = "https://api.coinmarketcap.com/v2/ticker/" + coinID +"/";
-                console.log(coinUrl);
-                Http.open("GET", coinUrl);
-                Http.send();
-                Http.onreadystatechange= function(){
-                    if(this.readyState==4 && this.status==200) {
-                        var json = JSON.parse(Http.response);
-                        console.log(json);
+                    var coinUrl = "https://api.coinmarketcap.com/v2/ticker/" + coinID +"/";
+                    console.log(coinUrl);
+                    Http.open("GET", coinUrl);
+                    Http.send();
+                    Http.onreadystatechange= function(){
+                        if(this.readyState==4 && this.status==200) {
+                            var json = JSON.parse(Http.response);
+                            console.log(json);
 
+                            coin.name = json.data.name;
+                            coin.price = json.data.quotes.USD.price;
+                            coin.changeIn24 = json.data.quotes.USD.percent_change_24h;
+                            console.log(coin.price);
+                            console.log(coin.changeIn24);
+                            addWatchlistItem(coin);
+                        }
 
-                        coin.price = json.data.quotes.USD.price;
-                        coin.changeIn24 = json.data.quotes.USD.percent_change_24h;
-                        console.log(coin.price);
-                        console.log(coin.changeIn24);
-                        return coin;
                     }
                 }
             }
         }
     }
-    function addWatchlistItem(){
-        // <?php $results = $Coins->populateCoins() ?>
+
+    function addWatchlistItem(coin){
         // Find a <table> element with id="myTable":
         var table = document.getElementById("watchlistTable");
 
         // Create an empty <tr> element and add it to the 1st position of the table:
         var row = table.insertRow(-1);
-        var coin = document.getElementById('watchlistSearch').value;
 
         // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
         var cellName = row.insertCell(-1);
         var cellPrice = row.insertCell(-1);
         var cellChange = row.insertCell(-1);
 
-        var name = document.getElementById('watchlistSearch').value;
-        
+        // var name = document.getElementById('watchlistSearch').value;
+        var name = coin.name;
             
         if(name != ""){
             // Add some text to the new cells:
-            // var price = {!! $Coins->getCoinDetail("Bitcoin")->getPrice(); !!};
-            var coinInfo = getCoinInfo(name);
 
             cellName.innerHTML = name;
-            cellPrice.innerHTML = String(coinInfo.price); //price
-            cellChange.innerHTML = String(coinInfo.changeIn24); //change
+            cellPrice.innerHTML = String(coin.price); //price
+            cellChange.innerHTML = String(coin.changeIn24); //change
         }
         else{
             console.log(name);
